@@ -15,10 +15,6 @@ class Login(QMainWindow):
         username = self.usernameField.text()
         password = self.passwordField.text()
 
-        #debugging
-        print(username)
-        print(password)
-
         general.Utils.login(username,password)
 
 
