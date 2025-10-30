@@ -38,8 +38,8 @@ class Statistics:
         return result
 
     @staticmethod
-    def topFive():
-        query = """SELECT p.productId, p.productName, SUM(r.Quantity) AS total_quantity FROM records r JOIN products p ON r.productId = p.productId GROUP BY p.productId, p.productName ORDER BY total_quantity DESC LIMIT 5;"""
+    def getTopFive():
+        query = """SELECT p.productName, SUM(r.Quantity) AS total_quantity FROM records r JOIN products p ON r.productId = p.productId GROUP BY p.productId, p.productName ORDER BY total_quantity DESC LIMIT 5;"""
         cursor.execute(query)
         result = cursor.fetchall()
 

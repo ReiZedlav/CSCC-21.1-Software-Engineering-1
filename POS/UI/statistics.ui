@@ -240,7 +240,7 @@
       <string>Top 5 sellers</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_13">
+    <widget class="QLabel" name="topOne">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -253,7 +253,7 @@
       <string>[FIRST]</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14">
+    <widget class="QLabel" name="topTwo">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -266,7 +266,7 @@
       <string>[SECOND]</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_15">
+    <widget class="QLabel" name="topThree">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -279,7 +279,7 @@
       <string>[THIRD]</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_16">
+    <widget class="QLabel" name="topFour">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -292,7 +292,7 @@
       <string>[FOURTH]</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_17">
+    <widget class="QLabel" name="topFive">
      <property name="geometry">
       <rect>
        <x>50</x>
