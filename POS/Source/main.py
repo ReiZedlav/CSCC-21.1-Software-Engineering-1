@@ -4,6 +4,9 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 
 from API import general
+from admin import adminPanel
+
+#This is where it all begins.
 
 class Login(QMainWindow):
     def __init__(self):
@@ -11,14 +14,30 @@ class Login(QMainWindow):
         loadUi("../UI/login.ui", self)
         self.submitButton.clicked.connect(self.authenticate)
 
+    def adminPanel(self,session):
+        panel = admin.Statistics(cookies)
+        widget.addWidget(panel)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
     def authenticate(self):
         username = self.usernameField.text()
         password = self.passwordField.text()
 
-        general.Utils.login(username,password)
+        cookies = general.Utils.login(username,password)
 
+        print(cookies)
 
+        
+        #use try catch to prevent user enumeration when its bug free.
+        if cookies["roleID"] == 1:
+            panel = adminPanel.Statistics(cookies)
+            widget.addWidget(panel)
+            widget.setCurrentIndex(widget.currentIndex() + 1)
 
+        elif cookies["roleID"] == 2:
+            #goto cashier
+            print("You are cashier!")
+        
 
 
 

@@ -1,6 +1,7 @@
 import mysql.connector
 import bcrypt
 
+#everything thats not administrative or used by cashier belongs here.
 
 connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
@@ -27,24 +28,22 @@ class Utils():
             cookies["roleID"] = result[0][1]
             bcryptPassword = result[0][2]
         except IndexError:
-            print("User not found!")
-
+            print(cookies)
+            return None
         try:
             verified = bcrypt.checkpw(password.encode('utf-8'),bcryptPassword.encode('utf-8'))
             
             if verified:
-                #login to cashier or admin panel based on role.
-                print("success")
 
-                #if roleid = 1 -> admin
-                #if roleid = 2 -? cashier
+                return cookies
 
-
-                pass
             else:
-                print("Wrong username or password!")
+                print(cookies)
+                return None
             
         except UnboundLocalError:
-            pass
+            print(cookies)
+            return None
         except ValueError:
-            pass
+            print(cookies)
+            return None

@@ -1,3 +1,6 @@
+
+/*SQL Script to populate the empty database with test data */
+
 INSERT INTO Users (firstName, middleName, lastName, userName, HashedPassword, roleId) VALUES
 ('John', 'A.', 'Drillman', 'johnd', 'hashed_password_1', 1),
 ('Jane', 'B.', 'Hammer', 'janeh', 'hashed_password_2', 2),

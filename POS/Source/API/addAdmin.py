@@ -1,3 +1,6 @@
+
+#system needs 1 admin
+
 import mysql.connector
 import bcrypt
 from mysql.connector import Error
