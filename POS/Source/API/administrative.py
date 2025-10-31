@@ -7,6 +7,32 @@ cursor = connection.cursor(prepared=True)
 class Employees:
 
     @staticmethod
+    def updateCashier(cashierId,firstname,middlename,lastname,username,password):
+        hashed_bytes = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+        hashed_str = hashed_bytes.decode("utf-8")
+
+        data = (firstname,middlename,lastname,username,hashed_str,cashierId)
+
+        query = """UPDATE users SET firstName = %s, middleName = %s, lastName = %s, username = %s, HashedPassword = %s WHERE userId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+        
+
+    @staticmethod
+    def getCashierData(cashierId):
+        data = (cashierId,)
+
+        query = """SELECT firstName,middleName,lastName,userName FROM users WHERE userId = %s;"""
+
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
     def addCashier(firstname,middlename,lastname,username,password):
         print(firstname,middlename,lastname,username,password)
         #turn password to bcrypt here

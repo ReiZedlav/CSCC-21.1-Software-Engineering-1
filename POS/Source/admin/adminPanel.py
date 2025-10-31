@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
-
+import mysql.connector
 from API import administrative
 
 
@@ -25,6 +25,12 @@ class Pages:
     @staticmethod
     def gotoAddEmployee(session,widget):
         panel = AddEmployee(session,widget)
+        widget.addWidget(panel)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
+    @staticmethod
+    def gotoEditEmployee(session,widget,cashierId):
+        panel = EditEmployee(session,widget,cashierId)
         widget.addWidget(panel)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
@@ -78,6 +84,7 @@ class Employees(QMainWindow):
         cashiers = administrative.Employees.getCashiers()
 
         #initialize employee table headers
+        self.employeeTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.employeeTable.setColumnCount(5)
         self.employeeTable.setRowCount(len(cashiers))
         self.employeeTable.setColumnHidden(0, True)
@@ -85,11 +92,16 @@ class Employees(QMainWindow):
         self.employeeTable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.employeeTable.setHorizontalHeaderLabels(["userId","username","First Name", "Middle Name", "Last Name",])
 
+        #double click event 
+        self.employeeTable.cellDoubleClicked.connect(self.rowClickEvent)
+
         #Search event
         self.searchUsername.textChanged.connect(self.search)
         self.searchFirstname.textChanged.connect(self.search)
         self.searchMiddlename.textChanged.connect(self.search)
         self.searchLastname.textChanged.connect(self.search)
+
+        
 
         tableRow = 0
 
@@ -106,7 +118,15 @@ class Employees(QMainWindow):
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.addButton.clicked.connect(lambda: Pages.gotoAddEmployee(self.session,self.widget))
 
-    
+    def rowClickEvent(self,row,column):
+        row_data = []
+        
+        for col in range(self.employeeTable.columnCount()):
+            item = self.employeeTable.item(row, col)
+            row_data.append(item.text() if item else "")
+
+        Pages.gotoEditEmployee(self.session,self.widget,row_data[0])
+
     def search(self):
         data = administrative.Employees.searchParameters(self.searchUsername.text(),self.searchFirstname.text(),self.searchMiddlename.text(),self.searchLastname.text())
         
@@ -130,6 +150,7 @@ class AddEmployee(QMainWindow):
         loadUi("../UI/AddEmployee.ui",self)
 
         
+        self.errorMsg.setVisible(False)
         self.submit.clicked.connect(self.add)
 
     def add(self):
@@ -139,11 +160,43 @@ class AddEmployee(QMainWindow):
         username = self.usernameForm.text()
         password = self.passwordForm.text()
 
-        if not (firstname.strip() or middlename.strip() or lastname.strip() or username.strip() or password.strip()):
-            print("Please fill in all fields.")
-            #add feature later on label that informs user that forms cannot be blank
+        if (not firstname.strip() or not middlename.strip() or not lastname.strip() or not username.strip() or not password.strip()):
+            self.errorMsg.setText("Please fill all necessary information!")
+            self.errorMsg.setVisible(True)
+
         else:
-            administrative.Employees.addCashier(firstname,middlename,lastname,username,password)
-            #add exception here later that detects duplicate username
+            try:
+                administrative.Employees.addCashier(firstname,middlename,lastname,username,password)
+                self.errorMsg.setText("Cashier added successfully!")
+                self.errorMsg.setVisible(True)
+                self.firstnameForm.clear()
+                self.middlenameForm.clear()
+                self.lastnameForm.clear()
+                self.usernameForm.clear()
+                self.passwordForm.clear()
+            except mysql.connector.errors.IntegrityError:
+                self.errorMsg.setText("That username is taken!")
+                self.errorMsg.setVisible(True)
+
+class EditEmployee(QMainWindow):
+    def __init__(self,session,widget,cashierId):
+        super().__init__()
+        self.session = session
+        self.widget = widget
+        self.cashierId = cashierId
+        loadUi("../UI/EditEmployee.ui",self)
+        
+        data = administrative.Employees.getCashierData(self.cashierId)
+
+        self.firstnameForm.setText(data[0][0])
+        self.middlenameForm.setText(data[0][1])
+        self.lastnameForm.setText(data[0][2])
+        self.usernameForm.setText(data[0][3])
+
+        self.updateButton.clicked.connect(self.initiateUpdate)
+    
+    def initiateUpdate(self):
+        administrative.Employees.updateCashier(self.cashierId,self.firstnameForm.text(),self.middlenameForm.text(),self.lastnameForm.text(),self.usernameForm.text(),self.passwordForm.text())
+        #add exception for existing usernames
 
 #--------------------------------------------------------------------------------------------------------------------------------
