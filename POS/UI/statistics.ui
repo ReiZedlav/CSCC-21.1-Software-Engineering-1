@@ -59,7 +59,7 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>190</y>
+       <y>160</y>
        <width>171</width>
        <height>61</height>
       </rect>
@@ -72,20 +72,20 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>280</y>
+       <y>340</y>
        <width>171</width>
        <height>61</height>
       </rect>
      </property>
      <property name="text">
-      <string>Manage Cashiers</string>
+      <string>Employees</string>
      </property>
     </widget>
     <widget class="QPushButton" name="inventoryButton">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>380</y>
+       <y>420</y>
        <width>171</width>
        <height>61</height>
       </rect>
@@ -98,13 +98,26 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>470</y>
+       <y>500</y>
        <width>171</width>
        <height>61</height>
       </rect>
      </property>
      <property name="text">
       <string>Promotions</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="statButton_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>250</y>
+       <width>171</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Logs</string>
      </property>
     </widget>
    </widget>
@@ -421,6 +434,19 @@
     </property>
     <property name="text">
      <string>pls group this. wla ni nka frame. igo rani ga fetch ug data</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>40</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>logout</string>
     </property>
    </widget>
   </widget>

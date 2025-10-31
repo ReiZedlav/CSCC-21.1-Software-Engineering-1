@@ -14,11 +14,6 @@ class Login(QMainWindow):
         loadUi("../UI/login.ui", self)
         self.submitButton.clicked.connect(self.authenticate)
 
-    def adminPanel(self,session):
-        panel = admin.Statistics(cookies)
-        widget.addWidget(panel)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
-
     def authenticate(self):
         username = self.usernameField.text()
         password = self.passwordField.text()
@@ -30,7 +25,7 @@ class Login(QMainWindow):
         
         #use try catch to prevent user enumeration when its bug free.
         if cookies["roleID"] == 1:
-            panel = adminPanel.Statistics(cookies)
+            panel = adminPanel.Statistics(cookies,widget)
             widget.addWidget(panel)
             widget.setCurrentIndex(widget.currentIndex() + 1)
 
@@ -43,7 +38,7 @@ class Login(QMainWindow):
 
 
 
-#boilerplate 
+#GUI handler
 app = QApplication(sys.argv)
 
 mainwindow = Login()
