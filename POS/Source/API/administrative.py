@@ -8,16 +8,26 @@ class Employees:
 
     @staticmethod
     def updateCashier(cashierId,firstname,middlename,lastname,username,password):
-        hashed_bytes = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-        hashed_str = hashed_bytes.decode("utf-8")
+        if not password.strip():
+            data = (firstname,middlename,lastname,username,cashierId)
 
-        data = (firstname,middlename,lastname,username,hashed_str,cashierId)
+            query = """UPDATE users set firstName = %s, middleName = %s, lastName = %s, username = %s WHERE userId = %s;"""
 
-        query = """UPDATE users SET firstName = %s, middleName = %s, lastName = %s, username = %s, HashedPassword = %s WHERE userId = %s;"""
+            cursor.execute(query,data)
 
-        cursor.execute(query,data)
+            connection.commit()
 
-        connection.commit()
+        else:
+            hashed_bytes = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+            hashed_str = hashed_bytes.decode("utf-8")
+
+            data = (firstname,middlename,lastname,username,hashed_str,cashierId)
+
+            query = """UPDATE users SET firstName = %s, middleName = %s, lastName = %s, username = %s, HashedPassword = %s WHERE userId = %s;"""
+
+            cursor.execute(query,data)
+
+            connection.commit()
         
 
     @staticmethod

@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
+from PyQt5.QtCore import QTimer
 import mysql.connector
 from API import administrative
 
@@ -188,15 +189,31 @@ class EditEmployee(QMainWindow):
         
         data = administrative.Employees.getCashierData(self.cashierId)
 
+        #initial data
         self.firstnameForm.setText(data[0][0])
         self.middlenameForm.setText(data[0][1])
         self.lastnameForm.setText(data[0][2])
         self.usernameForm.setText(data[0][3])
 
+        #Navigating buttons
         self.updateButton.clicked.connect(self.initiateUpdate)
     
+        #initialiazed
+        self.errorMsg.setVisible(False)
+
     def initiateUpdate(self):
-        administrative.Employees.updateCashier(self.cashierId,self.firstnameForm.text(),self.middlenameForm.text(),self.lastnameForm.text(),self.usernameForm.text(),self.passwordForm.text())
-        #add exception for existing usernames
+        
+        try:
+            administrative.Employees.updateCashier(self.cashierId,self.firstnameForm.text(),self.middlenameForm.text(),self.lastnameForm.text(),self.usernameForm.text(),self.passwordForm.text())
+            Pages.gotoEmployees(self.session,self.widget)
+
+        except mysql.connector.errors.IntegrityError:
+            print("Failed")
+            self.errorMsg.setVisible(True)
+            self.errorMsg.setText("That username is taken!")
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
+
 
 #--------------------------------------------------------------------------------------------------------------------------------
+
