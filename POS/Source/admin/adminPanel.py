@@ -256,6 +256,8 @@ class InventoryProduct(QMainWindow):
 
         #button events
         self.priceConfirm.clicked.connect(self.updatePrice)
+        self.decrementButton.clicked.connect(self.decrement)
+        self.incrementButton.clicked.connect(self.increment)
 
         tableRow = 0
 
@@ -267,6 +269,49 @@ class InventoryProduct(QMainWindow):
 
             tableRow += 1
     
+    def decrement(self):
+        try:
+            administrative.Inventory.decrementCount(self.getProductId())
+        except mysql.connector.errors.DatabaseError:
+            self.errorMsg.setText("Stock cannot be less than 0!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
+
+        products = administrative.Inventory.getProducts()
+
+        tableRow = 0
+
+        for row in products:
+            self.productTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+            self.productTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+            self.productTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(row[2])))
+            self.productTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(row[3])))
+
+            tableRow += 1
+
+    def increment(self):
+        try:
+            administrative.Inventory.incrementCount(self.getProductId())
+        except mysql.connector.errors.DatabaseError:
+            self.errorMsg.setText("Stock cannot be less than 0!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
+
+        products = administrative.Inventory.getProducts()
+
+        tableRow = 0
+
+        for row in products:
+            self.productTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+            self.productTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+            self.productTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(row[2])))
+            self.productTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(row[3])))
+
+            tableRow += 1
+
+
     def setProductId(self,productId):
         self.productId = productId
 

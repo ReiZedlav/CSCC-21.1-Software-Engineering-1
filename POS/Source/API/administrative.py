@@ -7,6 +7,26 @@ cursor = connection.cursor(prepared=True)
 class Inventory:
 
     @staticmethod
+    def decrementCount(productId):
+        data = (productId,)
+
+        query = """UPDATE products set totalCount = totalCount - 1 WHERE productId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def incrementCount(productId):
+        data = (productId,)
+
+        query = """UPDATE products set totalCount = totalCount + 1 WHERE productId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
     def editPrice(newPrice,productId):
         data = (newPrice,productId)
 
