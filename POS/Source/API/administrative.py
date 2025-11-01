@@ -4,6 +4,30 @@ import bcrypt
 connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
 
+class Inventory:
+
+    @staticmethod
+    def editPrice(newPrice,productId):
+        data = (newPrice,productId)
+
+        query = """UPDATE products SET price = %s WHERE productId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod 
+    def getProducts():
+        query = """SELECT productId,productName,price,totalCount from products;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+    
+
+
 class Employees:
 
     @staticmethod

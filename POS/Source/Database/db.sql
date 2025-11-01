@@ -47,6 +47,9 @@ CREATE TABLE IF NOT EXISTS Products(
     iconId INT,
     totalCount INT NOT NULL DEFAULT 0,
 
+    CHECK (totalCount >= 0),
+    CHECK (price >= 1),
+
     FOREIGN KEY (iconId) REFERENCES Icons(iconId)     
 );
 
