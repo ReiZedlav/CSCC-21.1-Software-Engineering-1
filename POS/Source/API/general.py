@@ -1,3 +1,4 @@
+from PIL import Image
 import mysql.connector
 import bcrypt
 
@@ -5,6 +6,19 @@ import bcrypt
 
 connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
+
+class Icons:
+    @staticmethod 
+    def fitToPreview(inputFile):
+        
+        image = Image.open(inputFile)
+
+        w = 250
+        h = 250
+
+        resized = image.resize((w,h),Image.Resampling.LANCZOS)
+
+        return resized
 
 class Utils():
     @staticmethod

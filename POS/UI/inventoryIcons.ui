@@ -149,143 +149,107 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QTableWidget" name="productTable">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>421</width>
-       <height>371</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="incrementButton">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>150</y>
-       <width>93</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>+</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="decrementButton">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>150</y>
-       <width>93</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>-</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="editPrice">
-     <property name="geometry">
-      <rect>
-       <x>480</x>
-       <y>220</y>
-       <width>131</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Edit price:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="priceForm">
-     <property name="geometry">
-      <rect>
-       <x>480</x>
-       <y>260</y>
-       <width>131</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="productName">
-     <property name="geometry">
-      <rect>
-       <x>530</x>
-       <y>80</y>
-       <width>121</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>[PRODUCT NAME]</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="addButton">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>410</y>
-       <width>131</width>
-       <height>51</height>
+       <x>30</x>
+       <y>20</y>
+       <width>93</width>
+       <height>28</height>
       </rect>
      </property>
      <property name="text">
-      <string>Add Product</string>
+      <string>Add Icon</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="iconTable">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>371</width>
+       <height>351</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="image">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>80</y>
+       <width>250</width>
+       <height>250</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>                   [IMAGE HERE]</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="iconNamePreview">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>30</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>[ICON NAME]</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>430</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Return</string>
      </property>
     </widget>
     <widget class="QLabel" name="errorMsg">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>370</y>
-       <width>251</width>
-       <height>51</height>
+       <x>480</x>
+       <y>360</y>
+       <width>241</width>
+       <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>[ERROR MSG]</string>
+      <string>[INVISIBLE ERROR MSG &amp; BUTTON]</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="priceConfirm">
+    <widget class="QPushButton" name="overwriteButton">
      <property name="geometry">
       <rect>
        <x>480</x>
-       <y>310</y>
-       <width>201</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Confirm Price</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>540</x>
-       <y>20</y>
+       <y>407</y>
        <width>161</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Product Details</string>
+      <string>Overwrite Icon</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="iconButton">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>410</y>
-       <width>131</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>View Icons</string>
-     </property>
-    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>30</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Note: [IMAGE HERE] must be 250x250</string>
+    </property>
    </widget>
   </widget>
  </widget>

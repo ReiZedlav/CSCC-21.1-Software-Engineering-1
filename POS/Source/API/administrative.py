@@ -7,6 +7,16 @@ cursor = connection.cursor(prepared=True)
 class Inventory:
 
     @staticmethod
+    def getIcons():
+        query = """SELECT iconId,iconPath,iconPath from icons;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
     def decrementCount(productId):
         data = (productId,)
 

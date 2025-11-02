@@ -5,7 +5,6 @@ import mysql.connector
 import bcrypt
 from mysql.connector import Error
 
-# --- Config ---
 DB_CONFIG = {
     "host": "localhost",
     "database": "pos",
@@ -14,20 +13,15 @@ DB_CONFIG = {
 }
 
 try:
-    # connect
     connection = mysql.connector.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
-    # password hashing (bcrypt returns bytes)
     password = "administrator"
     hashed_bytes = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-    # decode to store as text (bcrypt output is ASCII-safe)
     hashed_str = hashed_bytes.decode("utf-8")
 
-    # data to insert (order matches columns)
     data = ("sudo", "L.", "kernel", "administrator", hashed_str, 1)
 
-    # SQL with the correct number of placeholders
     query = """
         INSERT INTO Users (firstName, middleName, lastName, userName, HashedPassword, roleId)
         VALUES (%s, %s, %s, %s, %s, %s)
