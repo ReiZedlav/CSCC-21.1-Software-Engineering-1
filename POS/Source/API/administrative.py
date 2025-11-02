@@ -5,6 +5,25 @@ connection = mysql.connector.connect(host="localhost",database="pos",user="root"
 cursor = connection.cursor(prepared=True)
 
 class Inventory:
+    @staticmethod
+    def editIcon(path,iconId):
+        data = (path,iconId)
+
+        query = """UPDATE icons SET iconPath = %s WHERE iconId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def addIcon(path):
+        data = (path,)
+
+        query = """INSERT into icons(iconPath) VALUES (%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
 
     @staticmethod
     def getIcons():
