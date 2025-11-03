@@ -155,21 +155,8 @@
        <x>440</x>
        <y>40</y>
        <width>256</width>
-       <height>341</height>
+       <height>281</height>
       </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>530</x>
-       <y>10</y>
-       <width>141</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Categories</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="productnameForm">
@@ -264,11 +251,11 @@
       <string>Icon</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="returnButton">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>417</y>
+       <x>20</x>
+       <y>430</y>
        <width>111</width>
        <height>31</height>
       </rect>
@@ -277,11 +264,11 @@
       <string>return</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="categoryAdd">
      <property name="geometry">
       <rect>
        <x>590</x>
-       <y>400</y>
+       <y>380</y>
        <width>101</width>
        <height>41</height>
       </rect>
@@ -290,20 +277,20 @@
       <string>Add Category</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="categoryForm">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>401</y>
+       <x>440</x>
+       <y>380</y>
        <width>121</width>
        <height>31</height>
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="productSubmit">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>50</x>
        <y>350</y>
        <width>191</width>
        <height>41</height>
@@ -311,6 +298,19 @@
      </property>
      <property name="text">
       <string>Submit</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="errorMsg">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>400</y>
+       <width>301</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>[INVISIBLE FEEDBACK]</string>
      </property>
     </widget>
    </widget>

@@ -5,6 +5,51 @@ connection = mysql.connector.connect(host="localhost",database="pos",user="root"
 cursor = connection.cursor(prepared=True)
 
 class Inventory:
+    
+    #make last inserted product method
+
+    @staticmethod
+    def setCategory(productId,categories):
+        for i in categories:
+            print(productId,i)
+            data = (productId,i)
+
+            query = """INSERT INTO productcategory(productId,categoryId) VALUES (%s,%s);"""
+
+            cursor.execute(query,data)
+
+            connection.commit()
+
+    @staticmethod
+    def getLastInsertedProductId():
+        query = """SELECT LAST_INSERT_ID() FROM products LIMIT 1;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
+    def addProduct(productName,price,iconId,totalCount):
+        data = (productName,price,iconId,totalCount)
+
+        query = """INSERT INTO products(productName,price,iconId,totalCount) VALUES (%s,%s,%s,%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def addCategory(categoryName):
+        data = (categoryName,)
+
+        query = """INSERT INTO category(categoryName) VALUES (%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
     @staticmethod
     def getCategories():
         query = """SELECT categoryId,categoryName FROM category;"""

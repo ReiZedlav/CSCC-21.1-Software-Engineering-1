@@ -123,7 +123,7 @@ class Employees(QMainWindow):
         self.searchLastname.textChanged.connect(self.search)
 
         
-
+        #initialize tables
         tableRow = 0
 
         for row in cashiers:
@@ -139,6 +139,7 @@ class Employees(QMainWindow):
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.addButton.clicked.connect(lambda: Pages.gotoAddEmployee(self.session,self.widget))
 
+    #function for table click event
     def rowClickEvent(self,row,column):
         row_data = []
         
@@ -148,6 +149,7 @@ class Employees(QMainWindow):
 
         Pages.gotoEditEmployee(self.session,self.widget,row_data[0])
 
+    #self explanatory - searching lmaooooo
     def search(self):
         data = administrative.Employees.searchParameters(self.searchUsername.text(),self.searchFirstname.text(),self.searchMiddlename.text(),self.searchLastname.text())
         
@@ -407,6 +409,7 @@ class InventoryIcons(QMainWindow):
         #button click events
         self.addButton.clicked.connect(self.addIcon)
         self.overwriteButton.clicked.connect(self.overwriteIcon)
+        
 
         #pixmap
         pixmap = QPixmap("icons/default.png")
@@ -577,21 +580,24 @@ class InventoryAdd(QMainWindow):
         self.categoryTable.verticalHeader().setVisible(False)
         self.categoryTable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.categoryTable.setSelectionMode(QAbstractItemView.MultiSelection)
-        self.categoryTable.setHorizontalHeaderLabels(["Column ID","Column Name"])
+        self.categoryTable.setHorizontalHeaderLabels(["Category ID","Category"])
 
+        self.errorMsg.setVisible(False)
         
-
+        #button events
+        self.categoryAdd.clicked.connect(self.addCategory)
+        self.productSubmit.clicked.connect(self.submitProduct)
 
         #table events
         self.categoryTable.cellClicked.connect(self.rowClick)
-
+        
 
         header = self.categoryTable.horizontalHeader()
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
 
         tableRow = 0
 
-        #self.categoryBox.addItem(str(row[1]), row[0])
+        
 
         for row in categories:
             self.categoryTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
@@ -603,6 +609,48 @@ class InventoryAdd(QMainWindow):
         for row in icons:
             self.iconBox.addItem(str(row[1].split("/")[1]), row[0])
     
+    def submitProduct(self):
+        name = self.productnameForm.text()
+        price = self.priceForm.text()
+        stock = self.stockForm.text()
+        iconId = self.iconBox.currentData()
+        if (not name.strip() or not price.strip() or not stock.strip()):
+            self.errorMsg.setText("Please fill all necessary information!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
+        else:
+            try:
+                administrative.Inventory.addProduct(name,price,stock,iconId)
+            except mysql.connector.errors.DatabaseError:
+                self.errorMsg.setText("Price cannot be 0 or Stock cannot be less than 0")
+                self.errorMsg.setVisible(True)
+                QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
+                return 
+
+            productId = administrative.Inventory.getLastInsertedProductId()[0][0]
+
+            administrative.Inventory.setCategory(productId,self.getSelected())
+        
+
+    def getSelected(self):
+        return self.selected
+
+    def addCategory(self):
+        administrative.Inventory.addCategory(self.categoryForm.text())
+
+        categories = administrative.Inventory.getCategories()
+        self.categoryTable.setRowCount(len(categories))
+
+        tableRow = 0
+
+        for row in categories:
+            self.categoryTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+            self.categoryTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+            tableRow += 1
+        self.categoryForm.clear()
+
     def rowClick(self,row,column):
         row_data = []
 
