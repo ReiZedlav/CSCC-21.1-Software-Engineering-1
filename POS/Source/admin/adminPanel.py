@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog,QAbstractItemView
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap
@@ -488,7 +488,13 @@ class InventoryIcons(QMainWindow):
 
                 resized_image.save(f"icons/{file_name}")
 
-                administrative.Inventory.addIcon(f"icons/{file_name}")
+                try:
+                    administrative.Inventory.addIcon(f"icons/{file_name}")
+                except mysql.connector.errors.IntegrityError:
+                    self.errorMsg.setText("That Image has already been used!")
+                    self.errorMsg.setVisible(True)
+                    
+                    return 
 
                 icons = administrative.Inventory.getIcons()
 
@@ -559,4 +565,55 @@ class InventoryAdd(QMainWindow):
 
         loadUi("../UI/inventoryAdd.ui",self)
 
+        self.selected = []
+
+        categories = administrative.Inventory.getCategories()
+
+        #table initialization
+        self.categoryTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.categoryTable.setColumnCount(2)
+        self.categoryTable.setRowCount(len(categories))
+        self.categoryTable.setColumnHidden(0, True)
+        self.categoryTable.verticalHeader().setVisible(False)
+        self.categoryTable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.categoryTable.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.categoryTable.setHorizontalHeaderLabels(["Column ID","Column Name"])
+
+        
+
+
+        #table events
+        self.categoryTable.cellClicked.connect(self.rowClick)
+
+
+        header = self.categoryTable.horizontalHeader()
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+        tableRow = 0
+
+        #self.categoryBox.addItem(str(row[1]), row[0])
+
+        for row in categories:
+            self.categoryTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+            self.categoryTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+            tableRow += 1
+
+        icons = administrative.Inventory.getIcons()
+
+        for row in icons:
+            self.iconBox.addItem(str(row[1].split("/")[1]), row[0])
+    
+    def rowClick(self,row,column):
+        row_data = []
+
+        for col in range(self.categoryTable.columnCount()):
+            item = self.categoryTable.item(row, col)
+            row_data.append(item.text() if item else "")
+        
+        if row_data[0] in self.selected:
+            self.selected.remove(row_data[0])
+        else:
+            self.selected.append(row_data[0])
+
+        print(self.selected)
 #-------------------------------------------------------------------------------------------------------------------------------

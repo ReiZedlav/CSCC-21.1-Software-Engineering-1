@@ -32,7 +32,7 @@ INSERT INTO Users (firstName,middleName,lastName,userName,HashedPassword,roleId)
 
 CREATE TABLE IF NOT EXISTS Icons(
     iconId INT AUTO_INCREMENT PRIMARY KEY,
-    iconPath varchar(255)
+    iconPath varchar(255) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Category(

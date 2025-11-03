@@ -6,6 +6,15 @@ cursor = connection.cursor(prepared=True)
 
 class Inventory:
     @staticmethod
+    def getCategories():
+        query = """SELECT categoryId,categoryName FROM category;"""
+        cursor.execute(query)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
     def editIcon(path,iconId):
         data = (path,iconId)
 

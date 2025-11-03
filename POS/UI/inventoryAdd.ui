@@ -153,9 +153,9 @@
      <property name="geometry">
       <rect>
        <x>440</x>
-       <y>90</y>
+       <y>40</y>
        <width>256</width>
-       <height>291</height>
+       <height>341</height>
       </rect>
      </property>
     </widget>
@@ -163,7 +163,7 @@
      <property name="geometry">
       <rect>
        <x>530</x>
-       <y>60</y>
+       <y>10</y>
        <width>141</width>
        <height>16</height>
       </rect>
@@ -172,7 +172,7 @@
       <string>Categories</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="productnameForm">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -182,7 +182,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="priceForm">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -192,7 +192,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="stockForm">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -202,12 +202,12 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_2">
+    <widget class="QComboBox" name="iconBox">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>290</y>
-       <width>91</width>
+       <x>50</x>
+       <y>310</y>
+       <width>201</width>
        <height>22</height>
       </rect>
      </property>
@@ -251,19 +251,6 @@
       <string>Stock</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>40</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Categories</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
@@ -275,19 +262,6 @@
      </property>
      <property name="text">
       <string>Icon</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_8">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>430</y>
-       <width>271</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>remember: product has multiple categories</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
@@ -307,7 +281,7 @@
      <property name="geometry">
       <rect>
        <x>590</x>
-       <y>10</y>
+       <y>400</y>
        <width>101</width>
        <height>41</height>
       </rect>
@@ -316,19 +290,68 @@
       <string>Add Category</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_9">
+    <widget class="QLineEdit" name="lineEdit_4">
      <property name="geometry">
       <rect>
-       <x>270</x>
-       <y>70</y>
-       <width>161</width>
-       <height>61</height>
+       <x>450</x>
+       <y>401</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>350</y>
+       <width>191</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>idea tap based approach</string>
+      <string>Submit</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>40</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>idea tap based approach</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>30</y>
+      <width>271</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>remember: product has multiple categories</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>40</y>
+      <width>191</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>dont forget edit category</string>
+    </property>
    </widget>
   </widget>
  </widget>
