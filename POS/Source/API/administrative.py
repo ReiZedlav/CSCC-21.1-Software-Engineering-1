@@ -6,7 +6,71 @@ cursor = connection.cursor(prepared=True)
 
 class Inventory:
     
-    #make last inserted product method
+    @staticmethod
+    def addProductCategory(productid,categoryid):
+        data = (productid,categoryid)
+
+        query = """INSERT INTO productcategory(productId,categoryId) VALUES (%s,%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def removeProductCategory(productid,categoryid):
+        data = (productid,categoryid)
+
+        query = """DELETE FROM productcategory WHERE productId = %s and categoryId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def getSpecificCategoryListing(productid):
+        data = (productid,)
+
+        query = ("""SELECT categoryId, categoryName FROM category WHERE categoryId NOT IN (SELECT categoryId FROM productcategory WHERE productId = %s); """)
+        
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
+    def getSpecificProductCategory(productid):
+        data = (productid,) 
+
+        query = """SELECT category.categoryId,categoryName FROM productcategory LEFT JOIN category ON category.categoryId = productcategory.categoryId WHERE productId = %s; """
+
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
+    def updateSpecificProduct(productname,price,stock,iconid,productid):
+        data = (productname,price,iconid,stock,productid)
+
+        query = """UPDATE products SET productName = %s, price = %s, iconId = %s, totalCount = %s WHERE productId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def getSpecificProduct(productId):
+        data = (productId,)
+
+        query = """SELECT productName,price,iconId,totalCount FROM products WHERE productId = %s;"""
+
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
 
     @staticmethod
     def setCategory(productId,categories):
