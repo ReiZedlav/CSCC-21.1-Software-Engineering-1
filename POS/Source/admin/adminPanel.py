@@ -489,6 +489,8 @@ class InventoryIcons(QMainWindow):
             else:
                 self.errorMsg.setText("Invalid file format!")
                 self.errorMsg.setVisible(True)
+                QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
         
 
     def addIcon(self):
@@ -515,6 +517,8 @@ class InventoryIcons(QMainWindow):
                 except mysql.connector.errors.IntegrityError:
                     self.errorMsg.setText("That Image has already been used!")
                     self.errorMsg.setVisible(True)
+                    QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
                     
                     return 
 
@@ -534,6 +538,8 @@ class InventoryIcons(QMainWindow):
             else:
                 self.errorMsg.setText("Invalid file format!")
                 self.errorMsg.setVisible(True)
+                QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
     
     def getIconId(self):
         return self.iconId
@@ -567,6 +573,9 @@ class InventoryIcons(QMainWindow):
             self.errorMsg.setText("That file does not exist!")
             self.errorMsg.setVisible(True)
             self.overwriteButton.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            QTimer.singleShot(3000, lambda: self.overwriteButton.setVisible(False))
+
             
             
 
@@ -715,6 +724,7 @@ class InventoryEdit(QMainWindow):
         #buttons
         self.overwriteButton.clicked.connect(self.updateProduct)        
         self.addCategory.clicked.connect(self.categorizeProduct)
+        self.newCategory.clicked.connect(self.newCategoryButton)
 
         #table click events
         self.categoryTable.cellDoubleClicked.connect(self.deleteRow)
@@ -744,9 +754,53 @@ class InventoryEdit(QMainWindow):
             if row[0] == default_icon:
                 self.iconBox.setCurrentIndex(index)
                 break
-    
-    def categorizeProduct(self): 
         
+        self.verifyAvailability()
+
+    def newCategoryButton(self):
+        newCat = self.categoryForm.text()
+        if (not newCat.strip()):
+            self.errorMsg.setText("Forms cannot be blank!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+        else:
+
+            try:
+                administrative.Inventory.addCategory(newCat.capitalize())
+            except mysql.connector.errors.IntegrityError:
+                self.errorMsg.setText("That category already exists!")
+                self.errorMsg.setVisible(True)
+                self.categoryForm.clear()
+                QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+                return
+
+            lastCatInserted = administrative.Inventory.getLastInsertedCategoryId()[0][0]
+
+            administrative.Inventory.categorizeNewCategory(self.productId,lastCatInserted)
+
+            categories = administrative.Inventory.getSpecificProductCategory(self.productId)
+
+            self.categoryTable.setRowCount(len(categories))
+
+            tableRow = 0
+
+            for row in categories:
+                self.categoryTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+                self.categoryTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+                tableRow += 1
+
+            self.categoryForm.clear()
+
+
+    def verifyAvailability(self):
+        if self.categoryBox.count() == 0:
+            self.addCategory.setVisible(False)
+            self.categoryBox.setVisible(False)
+        else:
+            self.addCategory.setVisible(True)
+            self.categoryBox.setVisible(True)
+
+    def categorizeProduct(self): 
         administrative.Inventory.addProductCategory(self.productId,self.categoryBox.currentData())
 
         categories = administrative.Inventory.getSpecificProductCategory(self.productId)
@@ -765,6 +819,7 @@ class InventoryEdit(QMainWindow):
 
         for row in categoryListing:
             self.categoryBox.addItem(row[1], row[0])
+        self.verifyAvailability()
         
 
     def deleteRow(self,row,column):
@@ -793,7 +848,7 @@ class InventoryEdit(QMainWindow):
 
         for row in categoryListing:
             self.categoryBox.addItem(row[1], row[0])
-
+        self.verifyAvailability()
         
         
     def updateProduct(self):

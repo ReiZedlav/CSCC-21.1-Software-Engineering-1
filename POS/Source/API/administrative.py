@@ -73,6 +73,26 @@ class Inventory:
         return result
 
     @staticmethod
+    def getLastInsertedCategoryId():
+        query = """SELECT LAST_INSERT_ID() FROM category LIMIT 1;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
+    def categorizeNewCategory(productid,categoryid):
+        data = (productid,categoryid)
+
+        query = """INSERT INTO productcategory(productId,categoryId) VALUES (%s,%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
     def setCategory(productId,categories):
         for i in categories:
             print(productId,i)

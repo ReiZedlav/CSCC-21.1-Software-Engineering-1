@@ -264,7 +264,7 @@
       <string>return</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="newCategory_2">
+    <widget class="QPushButton" name="newCategory">
      <property name="geometry">
       <rect>
        <x>590</x>
@@ -303,8 +303,8 @@
     <widget class="QLabel" name="errorMsg">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>400</y>
+       <x>250</x>
+       <y>430</y>
        <width>301</width>
        <height>16</height>
       </rect>

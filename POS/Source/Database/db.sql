@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Icons(
 
 CREATE TABLE IF NOT EXISTS Category(
     categoryId INT AUTO_INCREMENT PRIMARY KEY,
-    categoryName varchar(255)
+    categoryName varchar(255) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Products(

@@ -274,7 +274,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Add Category</string>
+      <string>New Category</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="categoryForm">
