@@ -45,8 +45,8 @@ mainwindow = Login()
 
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
-widget.setFixedWidth(1000)
-widget.setFixedHeight(600)
+widget.setFixedWidth(1200)
+widget.setFixedHeight(800)
 widget.show()
 
 app.exec_()

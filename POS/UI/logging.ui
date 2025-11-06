@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,7 +107,7 @@
       <string>Promotions</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="statButton_2">
+    <widget class="QPushButton" name="logButton">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -134,27 +134,236 @@
      <string>logout</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="logTable">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>140</y>
-      <width>441</width>
+      <x>290</x>
+      <y>80</y>
+      <width>861</width>
       <height>421</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="invoiceForm">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>520</y>
+      <width>113</width>
+      <height>22</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>810</x>
-      <y>90</y>
-      <width>131</width>
-      <height>31</height>
+      <x>290</x>
+      <y>520</y>
+      <width>111</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>MORE INFORMATION</string>
+     <string>Search Invoice ID:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="userForm">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>560</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>560</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search User ID:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>600</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search Product:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="productForm">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>600</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>520</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search Timestamp:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="timestampForm">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>520</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="facilitatorLabel">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>50</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Facilitator:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cashLabel">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>530</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cash:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="changeLabel">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>560</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Change:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="amountLabel">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>590</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Amount:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cashOutput">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>530</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[CASH]</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="changeOutput">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>560</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[CHANGE]</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="amountOutput">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>590</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[[AMOUNT]</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="facilitatorOutput">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>50</y>
+      <width>381</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[NAME]</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="promoLabel">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>620</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Promo:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="promoOutput">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>620</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[PROMO]</string>
     </property>
    </widget>
   </widget>

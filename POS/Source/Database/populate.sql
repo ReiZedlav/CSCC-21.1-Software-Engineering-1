@@ -2,25 +2,25 @@
 /*SQL Script to populate the empty database with test data */
 
 INSERT INTO Users (firstName, middleName, lastName, userName, HashedPassword, roleId) VALUES
-('John', 'A.', 'Drillman', 'johnd', 'hashed_password_1', 1),
+('John', 'A.', 'Drillman', 'johnd', 'hashed_password_1', 2),
 ('Jane', 'B.', 'Hammer', 'janeh', 'hashed_password_2', 2),
-('Michael', 'C.', 'Screw', 'michaels', 'hashed_password_3', 1),
+('Michael', 'C.', 'Screw', 'michaels', 'hashed_password_3', 2),
 ('Emily', 'D.', 'Wrench', 'emilyw', 'hashed_password_4', 2),
-('Daniel', 'E.', 'Saw', 'daniels', 'hashed_password_5', 1),
+('Daniel', 'E.', 'Saw', 'daniels', 'hashed_password_5', 2),
 ('Olivia', 'F.', 'Pliers', 'oliviap', 'hashed_password_6', 2),
-('Matthew', 'G.', 'Nail', 'matthewn', 'hashed_password_7', 1),
+('Matthew', 'G.', 'Nail', 'matthewn', 'hashed_password_7', 2),
 ('Sophia', 'H.', 'Bolt', 'sophiab', 'hashed_password_8', 2),
-('Andrew', 'I.', 'Sander', 'andrews', 'hashed_password_9', 1),
+('Andrew', 'I.', 'Sander', 'andrews', 'hashed_password_9', 2),
 ('Isabella', 'J.', 'Tape', 'isabellat', 'hashed_password_10', 2),
-('Christopher', 'K.', 'Level', 'chrisl', 'hashed_password_11', 1),
+('Christopher', 'K.', 'Level', 'chrisl', 'hashed_password_11', 2),
 ('Mia', 'L.', 'Paint', 'miap', 'hashed_password_12', 2),
-('Joshua', 'M.', 'Drill', 'joshuad', 'hashed_password_13', 1),
+('Joshua', 'M.', 'Drill', 'joshuad', 'hashed_password_13', 2),
 ('Ava', 'N.', 'Sawblade', 'avas', 'hashed_password_14', 2),
-('Ethan', 'O.', 'Screwdriver', 'ethans', 'hashed_password_15', 1),
+('Ethan', 'O.', 'Screwdriver', 'ethans', 'hashed_password_15', 2),
 ('Charlotte', 'P.', 'Wrenchset', 'charlottew', 'hashed_password_16', 2),
-('Alexander', 'Q.', 'Hammerhead', 'alexh', 'hashed_password_17', 1),
+('Alexander', 'Q.', 'Hammerhead', 'alexh', 'hashed_password_17', 2),
 ('Amelia', 'R.', 'Chisel', 'ameliac', 'hashed_password_18', 2),
-('William', 'S.', 'Workbench', 'willw', 'hashed_password_19', 1),
+('William', 'S.', 'Workbench', 'willw', 'hashed_password_19', 2),
 ('Harper', 'T.', 'Toolbox', 'harpert', 'hashed_password_20', 2);
 
 INSERT INTO Icons (iconPath) VALUES

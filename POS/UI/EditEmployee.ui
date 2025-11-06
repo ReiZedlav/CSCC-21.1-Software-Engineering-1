@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,7 +107,7 @@
       <string>Promotions</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="statButton_2">
+    <widget class="QPushButton" name="logButton">
      <property name="geometry">
       <rect>
        <x>40</x>
