@@ -4,6 +4,18 @@ import bcrypt
 connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
 
+class Promotions:
+
+    @staticmethod 
+    def getPromos():
+        query = """SELECT * FROM promotions;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+
 class Logging:
 
     @staticmethod

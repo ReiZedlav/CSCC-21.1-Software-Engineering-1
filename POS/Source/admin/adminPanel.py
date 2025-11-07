@@ -10,6 +10,11 @@ import shutil
 import re
 
 class Pages:
+    @staticmethod
+    def gotoPromotions(session,widget):
+        panel = Promotions(session,widget)
+        widget.addWidget(panel)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
     @staticmethod
     def gotoLogging(session,widget):
@@ -104,6 +109,7 @@ class Statistics(QMainWindow):
         self.cashierButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
         self.inventoryButton.clicked.connect(lambda: Pages.gotoInventoryProduct(self.session,self.widget))
         self.logButton.clicked.connect(lambda: Pages.gotoLogging(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
 
 #--------------------------------------------------------------------------------------------------------------------------------
 
@@ -993,7 +999,51 @@ class Logging(QMainWindow):
         self.promoLabel.setVisible(True)
         self.promoOutput.setVisible(True)
         
+#--------------------------------------------------------------------------------
+
+class Promotions(QMainWindow):
+    def __init__(self,session,widget):
+        super().__init__()
+        self.session = session
+        self.widget = widget   
         
-        
+        loadUi("../UI/promotions.ui",self)
+        promos = administrative.Promotions.getPromos()
 
         
+        self.promotionTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.promotionTable.setColumnCount(5)
+        self.promotionTable.setRowCount(len(promos))
+        self.promotionTable.verticalHeader().setVisible(False)
+        self.promotionTable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.promotionTable.setHorizontalHeaderLabels(["Promotion ID","Promotion Name","Promotion Code","Discount %","Minimum Purchase"])
+        self.promotionTable.setColumnHidden(0, True)
+
+        header = self.promotionTable.horizontalHeader()
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)  
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
+
+        #events
+        self.promotionTable.cellClicked.connect(self.rowClick)
+
+        tableRow = 0
+
+        for row in promos:
+            self.promotionTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+            self.promotionTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+            self.promotionTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(row[2])))
+            self.promotionTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(row[3])))
+            self.promotionTable.setItem(tableRow,4,QtWidgets.QTableWidgetItem(str(row[4])))
+
+            tableRow += 1
+
+    def rowClick(self,row,column):
+        row_data = []
+
+        for col in range(self.promotionTable.columnCount()):
+            item = self.promotionTable.item(row, col)
+            row_data.append(item.text() if item else "")
+        
+        print(row_data)

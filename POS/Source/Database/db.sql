@@ -70,7 +70,10 @@ CREATE TABLE IF NOT EXISTS Promotions(
     promotionId INT AUTO_INCREMENT PRIMARY KEY,
     promotionName varchar(255),
     promotionCode varchar(10) UNIQUE,
-    discount DECIMAL(5,2)
+    discount DECIMAL(5,2),
+    minimumPurchase INT,
+
+    CHECK (minimumPurchase >= 0)
 );
 
 CREATE TABLE IF NOT EXISTS Invoice(

@@ -94,7 +94,7 @@
       <string>Inventory</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="inventoryButton_2">
+    <widget class="QPushButton" name="promotionButton">
      <property name="geometry">
       <rect>
        <x>40</x>

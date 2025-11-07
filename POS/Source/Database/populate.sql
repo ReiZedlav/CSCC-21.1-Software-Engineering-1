@@ -88,12 +88,12 @@ INSERT INTO ProductCategory (productId, categoryId) VALUES
 (4, 1),  
 (12, 1); 
 
-INSERT INTO Promotions (promotionName, promotionCode, discount) VALUES
-('Spring Sale', 'SPRING10', 10.00),
-('Black Friday', 'BLKFRI20', 20.00),
-('New Customer', 'NEW5', 5.00),
-('Weekend Special', 'WKND15', 15.00),
-('Clearance', 'CLEAR30', 30.00);
+INSERT INTO Promotions (promotionName, promotionCode, discount,minimumPurchase) VALUES
+('Spring Sale', 'SPRING10', 10.00,100),
+('Black Friday', 'BLKFRI20', 20.00,3000),
+('New Customer', 'NEW5', 5.00,0),
+('Weekend Special', 'WKND15', 15.00,150),
+('Clearance', 'CLEAR30', 30.00,700);
 
 INSERT INTO Invoice (userId, promotionId, totalCash, totalChange, totalAmount) VALUES
 (1, 1, 150.00, 0.00, 150.00),
