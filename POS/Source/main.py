@@ -4,15 +4,17 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 
 from API import general
-from admin import adminPanel
+from admin import statistics
 
 #This is where it all begins.
 
 class Login(QMainWindow):
     def __init__(self):
         super(Login,self).__init__()
-        loadUi("../UI/login.ui", self)
+        loadUi("UI/login.ui", self)
+
         self.submitButton.clicked.connect(self.authenticate)
+
 
     def authenticate(self):
         username = self.usernameField.text()
@@ -25,7 +27,7 @@ class Login(QMainWindow):
         
         #use try catch to prevent user enumeration when its bug free.
         if cookies["roleID"] == 1:
-            panel = adminPanel.Statistics(cookies,widget)
+            panel = statistics.Statistics(cookies,widget)
             widget.addWidget(panel)
             widget.setCurrentIndex(widget.currentIndex() + 1)
 
@@ -45,8 +47,9 @@ mainwindow = Login()
 
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
-widget.setFixedWidth(1200)
-widget.setFixedHeight(800)
+widget.setFixedWidth(1000)
+widget.setFixedHeight(600)
+widget.setWindowTitle("POS System")
 widget.show()
 
 app.exec_()
