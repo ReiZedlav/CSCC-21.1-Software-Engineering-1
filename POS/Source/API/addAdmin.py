@@ -9,7 +9,7 @@ DB_CONFIG = {
     "host": "localhost",
     "database": "pos",
     "user": "root",
-    "password": "root",
+    "password": "",
 }
 
 try:
@@ -26,7 +26,7 @@ try:
         INSERT INTO Users (firstName, middleName, lastName, userName, HashedPassword, roleId)
         VALUES (%s, %s, %s, %s, %s, %s)
     """
-
+    
     cursor.execute(query, data)
     connection.commit()
     print("User inserted, id:", cursor.lastrowid)

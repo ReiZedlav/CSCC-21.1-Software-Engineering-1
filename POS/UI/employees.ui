@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Employees</class>
+ <widget class="QMainWindow" name="Employees">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Admin Panel</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="frame">
@@ -94,7 +94,7 @@
       <string>Inventory</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="promotionButton">
+    <widget class="QPushButton" name="inventoryButton_2">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -107,7 +107,7 @@
       <string>Promotions</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="logButton">
+    <widget class="QPushButton" name="statButton_2">
      <property name="geometry">
       <rect>
        <x>40</x>

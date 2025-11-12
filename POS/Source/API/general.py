@@ -4,7 +4,7 @@ import bcrypt
 
 #everything thats not administrative or used by cashier belongs here.
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
 cursor = connection.cursor(prepared=True)
 
 class Icons:
