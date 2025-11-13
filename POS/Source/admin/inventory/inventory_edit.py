@@ -10,7 +10,7 @@ class InventoryEdit(QMainWindow):
         self.session = session
         self.widget = widget   
         self.productId = productId
-        loadUi("UI/inventoryEdit.ui",self)
+        loadUi("../UI/inventoryEdit.ui",self)
         
         self.errorMsg.setVisible(False)
 
@@ -40,6 +40,10 @@ class InventoryEdit(QMainWindow):
         # buttons change panels
         self.cashierButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
+        self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
+
 
         #table click events
         self.categoryTable.cellDoubleClicked.connect(self.deleteRow)

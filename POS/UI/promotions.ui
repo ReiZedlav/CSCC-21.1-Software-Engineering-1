@@ -137,11 +137,129 @@
    <widget class="QTableWidget" name="promotionTable">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>380</x>
       <y>100</y>
       <width>601</width>
       <height>331</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="promotionNameForm">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>480</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>450</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Promotion Name</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="promotionCodeForm">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>490</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>450</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Promotion Code</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>450</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Discount %</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addPromo">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>580</y>
+      <width>181</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>New Promo</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="discountForm">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>490</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>560</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Minimum Purchase</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="minimumPurchaseForm">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>590</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorMsg">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>505</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[ERROR MESSAGE]</string>
     </property>
    </widget>
   </widget>

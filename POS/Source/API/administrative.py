@@ -1,8 +1,48 @@
 import mysql.connector
 import bcrypt
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
+
+class Promotions:
+    @staticmethod
+    def insertPromo(pname,pcode,pdiscount,pminimumpurchase):
+        query = """INSERT INTO promotions(promotionName,promotionCode,discount,minimumPurchase) VALUES (%s,%s,%s,%s);"""
+        data = (pname,pcode,pdiscount,pminimumpurchase)
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod 
+    def getPromos():
+        query = """SELECT * FROM promotions;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+
+class Logging:
+
+    @staticmethod
+    def getSpecificLogs(invoiceid,userid,product,timestamp):
+        filteredInvoice = f"{invoiceid}%"
+        filteredUserid = f"{userid}%"
+        filteredProduct = f"{product}%"
+        filteredTimestamp = f"{timestamp}%"
+       
+        data = (filteredInvoice,filteredUserid,filteredProduct,filteredTimestamp)
+
+        query = """SELECT recordId,invoice.invoiceId,users.userId,productName,price,Quantity,timestampEvent,promotionName,totalCash,totalChange,totalAmount FROM records INNER JOIN invoice ON records.invoiceId = invoice.invoiceId INNER JOIN products ON records.productId = products.productId LEFT join promotions ON invoice.promotionId = promotions.promotionId INNER JOIN users ON users.userId = invoice.userId WHERE roleId = 2 AND invoice.invoiceId LIKE %s AND users.userId LIKE %s AND productName LIKE %s AND timestampEvent LIKE %s;"""
+
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
+
 
 class Inventory:
     
@@ -196,6 +236,18 @@ class Inventory:
 
 
 class Employees:
+
+    @staticmethod
+    def getFullname(userid):
+        data = (userid,)
+
+        query = """SELECT CONCAT(firstName,' ',middleName, ' ', lastName) AS FullName FROM users WHERE userId = %s;"""
+
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
 
     @staticmethod
     def updateCashier(cashierId,firstname,middlename,lastname,username,password):

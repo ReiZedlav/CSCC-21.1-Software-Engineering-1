@@ -14,7 +14,7 @@ class InventoryIcons(QMainWindow):
         self.session = session
         self.widget = widget  
         self.iconId = None
-        loadUi("UI/inventoryIcons.ui",self)
+        loadUi("../UI/inventoryIcons.ui",self)
 
         icons = administrative.Inventory.getIcons()
 
@@ -39,6 +39,9 @@ class InventoryIcons(QMainWindow):
         self.addButton.clicked.connect(self.addIcon)
         self.overwriteButton.clicked.connect(self.overwriteIcon)
         self.returnButton.clicked.connect(lambda: Pages.gotoInventoryProduct(self.session,self.widget))
+        self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
+        self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
 
         
 

@@ -11,7 +11,7 @@ from admin import statistics
 class Login(QMainWindow):
     def __init__(self):
         super(Login,self).__init__()
-        loadUi("UI/login.ui", self)
+        loadUi("../UI/login.ui", self)
 
         self.submitButton.clicked.connect(self.authenticate)
 
@@ -47,8 +47,8 @@ mainwindow = Login()
 
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
-widget.setFixedWidth(1000)
-widget.setFixedHeight(600)
+widget.setFixedWidth(1200)
+widget.setFixedHeight(800)
 widget.setWindowTitle("POS System")
 widget.show()
 

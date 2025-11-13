@@ -10,7 +10,7 @@ class Employees(QMainWindow):
         super().__init__()
         self.session = session
         self.widget = widget
-        loadUi("UI/employees.ui",self)
+        loadUi("../UI/employees.ui",self)
         
 
         cashiers = administrative.Employees.getCashiers()
@@ -50,6 +50,10 @@ class Employees(QMainWindow):
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.inventoryButton.clicked.connect(lambda: Pages.gotoInventoryProduct(self.session,self.widget))
         self.addButton.clicked.connect(lambda: Pages.gotoAddEmployee(self.session,self.widget))
+        self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
+        self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
+
 
     #function for table click event
     def rowClickEvent(self,row,column):

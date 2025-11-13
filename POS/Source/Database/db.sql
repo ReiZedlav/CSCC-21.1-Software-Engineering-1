@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Icons(
 
 CREATE TABLE IF NOT EXISTS Category(
     categoryId INT AUTO_INCREMENT PRIMARY KEY,
-    categoryName varchar(255)
+    categoryName varchar(255) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Products(
@@ -70,7 +70,10 @@ CREATE TABLE IF NOT EXISTS Promotions(
     promotionId INT AUTO_INCREMENT PRIMARY KEY,
     promotionName varchar(255),
     promotionCode varchar(10) UNIQUE,
-    discount DECIMAL(5,2)
+    discount DECIMAL(5,2),
+    minimumPurchase INT,
+
+    CHECK (minimumPurchase >= 0)
 );
 
 CREATE TABLE IF NOT EXISTS Invoice(

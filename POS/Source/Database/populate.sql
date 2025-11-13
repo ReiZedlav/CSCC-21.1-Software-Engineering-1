@@ -2,25 +2,25 @@
 /*SQL Script to populate the empty database with test data */
 
 INSERT INTO Users (firstName, middleName, lastName, userName, HashedPassword, roleId) VALUES
-('John', 'A.', 'Drillman', 'johnd', 'hashed_password_1', 1),
+('John', 'A.', 'Drillman', 'johnd', 'hashed_password_1', 2),
 ('Jane', 'B.', 'Hammer', 'janeh', 'hashed_password_2', 2),
-('Michael', 'C.', 'Screw', 'michaels', 'hashed_password_3', 1),
+('Michael', 'C.', 'Screw', 'michaels', 'hashed_password_3', 2),
 ('Emily', 'D.', 'Wrench', 'emilyw', 'hashed_password_4', 2),
-('Daniel', 'E.', 'Saw', 'daniels', 'hashed_password_5', 1),
+('Daniel', 'E.', 'Saw', 'daniels', 'hashed_password_5', 2),
 ('Olivia', 'F.', 'Pliers', 'oliviap', 'hashed_password_6', 2),
-('Matthew', 'G.', 'Nail', 'matthewn', 'hashed_password_7', 1),
+('Matthew', 'G.', 'Nail', 'matthewn', 'hashed_password_7', 2),
 ('Sophia', 'H.', 'Bolt', 'sophiab', 'hashed_password_8', 2),
-('Andrew', 'I.', 'Sander', 'andrews', 'hashed_password_9', 1),
+('Andrew', 'I.', 'Sander', 'andrews', 'hashed_password_9', 2),
 ('Isabella', 'J.', 'Tape', 'isabellat', 'hashed_password_10', 2),
-('Christopher', 'K.', 'Level', 'chrisl', 'hashed_password_11', 1),
+('Christopher', 'K.', 'Level', 'chrisl', 'hashed_password_11', 2),
 ('Mia', 'L.', 'Paint', 'miap', 'hashed_password_12', 2),
-('Joshua', 'M.', 'Drill', 'joshuad', 'hashed_password_13', 1),
+('Joshua', 'M.', 'Drill', 'joshuad', 'hashed_password_13', 2),
 ('Ava', 'N.', 'Sawblade', 'avas', 'hashed_password_14', 2),
-('Ethan', 'O.', 'Screwdriver', 'ethans', 'hashed_password_15', 1),
+('Ethan', 'O.', 'Screwdriver', 'ethans', 'hashed_password_15', 2),
 ('Charlotte', 'P.', 'Wrenchset', 'charlottew', 'hashed_password_16', 2),
-('Alexander', 'Q.', 'Hammerhead', 'alexh', 'hashed_password_17', 1),
+('Alexander', 'Q.', 'Hammerhead', 'alexh', 'hashed_password_17', 2),
 ('Amelia', 'R.', 'Chisel', 'ameliac', 'hashed_password_18', 2),
-('William', 'S.', 'Workbench', 'willw', 'hashed_password_19', 1),
+('William', 'S.', 'Workbench', 'willw', 'hashed_password_19', 2),
 ('Harper', 'T.', 'Toolbox', 'harpert', 'hashed_password_20', 2);
 
 INSERT INTO Icons (iconPath) VALUES
@@ -88,12 +88,12 @@ INSERT INTO ProductCategory (productId, categoryId) VALUES
 (4, 1),  
 (12, 1); 
 
-INSERT INTO Promotions (promotionName, promotionCode, discount) VALUES
-('Spring Sale', 'SPRING10', 10.00),
-('Black Friday', 'BLKFRI20', 20.00),
-('New Customer', 'NEW5', 5.00),
-('Weekend Special', 'WKND15', 15.00),
-('Clearance', 'CLEAR30', 30.00);
+INSERT INTO Promotions (promotionName, promotionCode, discount,minimumPurchase) VALUES
+('Spring Sale', 'SPRING10', 10.00,100),
+('Black Friday', 'BLKFRI20', 20.00,3000),
+('New Customer', 'NEW5', 5.00,0),
+('Weekend Special', 'WKND15', 15.00,150),
+('Clearance', 'CLEAR30', 30.00,700);
 
 INSERT INTO Invoice (userId, promotionId, totalCash, totalChange, totalAmount) VALUES
 (1, 1, 150.00, 0.00, 150.00),

@@ -13,7 +13,7 @@ class InventoryProduct(QMainWindow):
         self.widget = widget    
         self.productId = None
 
-        loadUi("UI/inventoryProduct.ui",self)
+        loadUi("../UI/inventoryProduct.ui",self)
 
         products = administrative.Inventory.getProducts()
 
@@ -63,6 +63,9 @@ class InventoryProduct(QMainWindow):
 
         self.cashierButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
+        self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
 
 
     def decrement(self):

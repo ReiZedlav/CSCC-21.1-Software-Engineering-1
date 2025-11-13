@@ -1,6 +1,20 @@
 
 class Pages:
     @staticmethod
+    def gotoPromotions(session,widget):
+        from admin.promotions import Promotions
+        panel = Promotions(session,widget)
+        widget.addWidget(panel)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
+    @staticmethod
+    def gotoLogs(session,widget):
+        from admin.logging import Logging
+        panel = Logging(session,widget)
+        widget.addWidget(panel)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
+    @staticmethod
     def gotoInventoryEdit(session,widget,productId):
         from admin.inventory.inventory_edit import InventoryEdit
         panel = InventoryEdit(session,widget,productId)

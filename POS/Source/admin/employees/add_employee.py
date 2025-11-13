@@ -9,7 +9,7 @@ class AddEmployee(QMainWindow):
         super().__init__()
         self.session = session
         self.widget = widget
-        loadUi("UI/AddEmployee.ui",self)
+        loadUi("../UI/AddEmployee.ui",self)
 
         
         self.errorMsg.setVisible(False)
@@ -18,6 +18,9 @@ class AddEmployee(QMainWindow):
         self.inventoryButton.clicked.connect(lambda: Pages.gotoInventoryProduct(self.session,self.widget))
         self.cashierButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
         self.returnButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
+        self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
+        self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
 
     def add(self):
         firstname = self.firstnameForm.text()

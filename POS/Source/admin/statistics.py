@@ -12,7 +12,7 @@ class Statistics(QMainWindow):
         #session - Identify user and permission. widget passes widgets 
         self.session = session
         self.widget = widget
-        loadUi("UI/statistics.ui", self)
+        loadUi("../UI/statistics.ui", self)
 
         topFive = administrative.Statistics.getTopFive()
     
@@ -40,3 +40,6 @@ class Statistics(QMainWindow):
 
         self.cashierButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
         self.inventoryButton.clicked.connect(lambda: Pages.gotoInventoryProduct(self.session,self.widget))
+        self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
+        self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
+        self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
