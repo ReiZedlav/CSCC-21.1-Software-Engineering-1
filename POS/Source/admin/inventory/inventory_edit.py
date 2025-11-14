@@ -73,6 +73,15 @@ class InventoryEdit(QMainWindow):
             if row[0] == default_icon:
                 self.iconBox.setCurrentIndex(index)
                 break
+        self.verifyAvailability()
+    
+    def verifyAvailability(self):
+        if self.categoryBox.count() == 0:
+            self.addCategory.setVisible(False)
+            self.categoryBox.setVisible(False)
+        else:
+            self.addCategory.setVisible(True)
+            self.categoryBox.setVisible(True)
     
     def categorizeProduct(self): 
         
@@ -94,6 +103,8 @@ class InventoryEdit(QMainWindow):
 
         for row in categoryListing:
             self.categoryBox.addItem(row[1], row[0])
+        self.verifyAvailability()
+
         
 
     def deleteRow(self,row,column):
@@ -122,6 +133,8 @@ class InventoryEdit(QMainWindow):
 
         for row in categoryListing:
             self.categoryBox.addItem(row[1], row[0])
+        self.verifyAvailability()
+
 
         
         

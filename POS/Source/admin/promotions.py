@@ -1,6 +1,6 @@
 import mysql.connector
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow,QAbstractItemView
 from PyQt5.QtCore import QTimer
 from PyQt5.uic import loadUi
 from API import administrative
@@ -21,6 +21,7 @@ class Promotions(QMainWindow):
         self.promotionTable.setRowCount(len(promos))
         self.promotionTable.verticalHeader().setVisible(False)
         self.promotionTable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.promotionTable.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.promotionTable.setHorizontalHeaderLabels(["Promotion ID","Promotion Name","Promotion Code","Discount %","Minimum Purchase"])
         self.promotionTable.setColumnHidden(0, True)
 
@@ -31,6 +32,7 @@ class Promotions(QMainWindow):
         header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
 
         self.errorMsg.setVisible(False)
+        self.editPromo.setVisible(False)
 
         # Button change panels
 
