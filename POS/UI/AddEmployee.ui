@@ -203,7 +203,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Middle Name:</string>
+     <string>Last Name:</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lastnameForm">

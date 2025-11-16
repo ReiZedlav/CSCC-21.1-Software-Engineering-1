@@ -1,10 +1,12 @@
 import sys
+import cashierPanel
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
-
 from API import general
 from admin import statistics
+
+
 
 #This is where it all begins.
 
@@ -33,6 +35,9 @@ class Login(QMainWindow):
 
         elif cookies["roleID"] == 2:
             #goto cashier
+            panel = cashierPanel.POS(cookies,widget)
+            widget.addWidget(panel)
+            widget.setCurrentIndex(widget.currentIndex() + 1)
             print("You are cashier!")
         
 
@@ -48,7 +53,7 @@ mainwindow = Login()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
 widget.setFixedWidth(1200)
-widget.setFixedHeight(800)
+widget.setFixedHeight(700)
 widget.setWindowTitle("POS System")
 widget.show()
 

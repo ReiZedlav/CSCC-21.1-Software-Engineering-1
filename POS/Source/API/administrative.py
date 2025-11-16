@@ -272,7 +272,6 @@ class Employees:
 
             connection.commit()
         
-
     @staticmethod
     def getCashierData(cashierId):
         data = (cashierId,)
@@ -301,7 +300,7 @@ class Employees:
         connection.commit()
 
         
-
+    #dynamic UI employee search
     @staticmethod
     def searchParameters(username,firstname,middlename,lastname):
         userNameFilter = f"{username}%"
