@@ -13,7 +13,7 @@ class Product:
     
     def increment(self):
         if self.amount == self.stock:
-            print("Out of stock")
+            return "out of stock"
 
         if self.amount < self.stock:
             self.amount += 1
@@ -40,6 +40,8 @@ class POS:
     def __init__(self):
         self.basket = {}
         self.total = 0
+
+        self.discountedSubtotal = 0
     
     def getBasket(self):
         return self.basket
@@ -49,22 +51,63 @@ class POS:
 
     def addToBasket(self,product):
         if product.getIdentifier() in self.basket:
-            self.basket[product.getIdentifier()].increment()
+            if self.basket[product.getIdentifier()].increment() == "out of stock":
+                return "out of stock"
+            else:
+                self.basket[product.getIdentifier()].increment()
         else:
             self.basket[product.getIdentifier()] = product
     
     def getTotal(self):
+        return self.getSubtotal() + self.vatTotal()
+
+    def vatTotal(self):
+        vat = self.getSubtotal() * 0.12
+        
+        return vat
+
+    def getSubtotal(self):
         self.total = 0
         for k,v in self.basket.items():
             self.total += v.getPrice() * v.getAmount()
 
         return self.total
-
     
+#-------------------------------------------------------------------------------------
+
+    def getDiscountedTotal(self):
+        return self.discountedSubtotal + self.getDiscountedVat()
+
+    def getDiscountedVat(self):
+        vat = self.discountedSubtotal * 0.12
+
+        return vat
+
+    def useCoupon(self,rate):
+        discount = self.getSubtotal() * rate
+
+        self.discountedSubtotal = self.getSubtotal() - discount 
+
+        return self.discountedSubtotal
+
+
+
+class Promotions:
+    @staticmethod
+    def usePromoCode(code):
+        query = """SELECT * FROM promotions WHERE promotionCode = %s;"""
+        data = (code,)
+
+        cursor.execute(query,data)
+
+        result = cursor.fetchall()
+
+        return result
+
 class Inventory:
     @staticmethod
     def getProductIcon(iconid):
-        query = """SELECT iconPath from icons WHERE iconId = %s"""
+        query = """SELECT iconPath FROM icons WHERE iconId = %s"""
 
         data = (iconid,)
 

@@ -24,6 +24,7 @@ class POS(QMainWindow):
         self.productTable.cellClicked.connect(self.imagePreview)
         self.productTable.cellDoubleClicked.connect(self.addToBasket)
         self.basketTable.cellClicked.connect(self.removeToBasket)
+        self.checkoutButton.clicked.connect(self.checkout)
 
         self.categoryBox.addItem("Any", None)
 
@@ -34,6 +35,11 @@ class POS(QMainWindow):
 
         
         #invisible data
+        self.subtotalLabel.setVisible(False)
+        self.subtotal.setVisible(False)
+        self.vatLabel.setVisible(False)
+        self.totalVat.setVisible(False)
+        self.errorMsg.setVisible(False)
         self.totalLabel.setVisible(False)
         self.total.setVisible(False)
 
@@ -73,7 +79,55 @@ class POS(QMainWindow):
 
         header = self.basketTable.horizontalHeader()
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
-        
+
+    def checkout(self):
+        mode = self.checkoutButton.text()          
+
+        if mode == "Checkout":
+            if self.basket.getBasketSize() == 0:
+                self.errorMsg.setText("Empty Basket!")
+                self.errorMsg.setVisible(True)
+                QTimer.singleShot(4000, lambda: self.errorMsg.setVisible(False))
+                return
+
+            if self.promoForm.text() == "":
+                self.checkoutButton.setText("Confirm")
+                QTimer.singleShot(5000, lambda: self.checkoutButton.setText("Checkout"))
+            
+            else:
+                promoDetails = cashier.Promotions.usePromoCode(self.promoForm.text())
+                
+                if len(promoDetails) == 0:
+                    self.errorMsg.setText("Invalid Coupon!")
+                    self.subtotal.setText(str(self.basket.getSubtotal()))
+                    self.totalVat.setText(str(self.basket.vatTotal()))
+                    self.total.setText(str(self.basket.getTotal()))
+                    self.errorMsg.setVisible(True)
+                    QTimer.singleShot(4000, lambda: self.errorMsg.setVisible(False))
+
+                    return
+
+                else:
+                    discountedSubTotal =  self.basket.useCoupon(float(promoDetails[0][3]) / 100)
+                    discountedVat = self.basket.getDiscountedVat()
+                    discountedTotal = self.basket.getDiscountedTotal()
+
+                    self.subtotal.setText(str(discountedSubTotal))
+                    self.totalVat.setText(str(discountedVat))
+                    self.total.setText(str(discountedTotal))
+                    
+                    self.checkoutButton.setText("Confirm")
+                    QTimer.singleShot(5000, lambda: self.checkoutButton.setText("Checkout"))
+                    QTimer.singleShot(5000, lambda: self.subtotal.setText(str(self.basket.getSubtotal())))
+                    QTimer.singleShot(5000, lambda: self.totalVat.setText(str(self.basket.vatTotal())))
+                    QTimer.singleShot(5000, lambda: self.total.setText(str(self.basket.getTotal())))
+                    
+        elif mode == "Confirm":
+            pass
+
+
+
+
     def removeToBasket(self,row,column):
         row_data = []
 
@@ -102,10 +156,20 @@ class POS(QMainWindow):
             tableRow += 1
         
         if self.basket.getBasketSize() > 0:
+            self.subtotal.setText(str(self.basket.getSubtotal()))
+            self.totalVat.setText(str(self.basket.vatTotal()))
             self.total.setText(str(self.basket.getTotal()))
+            self.subtotalLabel.setVisible(True)
+            self.subtotal.setVisible(True)
+            self.vatLabel.setVisible(True)
+            self.totalVat.setVisible(True)
             self.totalLabel.setVisible(True)
             self.total.setVisible(True)
         else:
+            self.subtotalLabel.setVisible(False)
+            self.subtotal.setVisible(False)
+            self.vatLabel.setVisible(False)
+            self.totalVat.setVisible(False)
             self.totalLabel.setVisible(False)
             self.total.setVisible(False)
 
@@ -121,7 +185,11 @@ class POS(QMainWindow):
 
         punch = cashier.Product(row_data[0],row_data[1],row_data[2],row_data[4])
 
-        self.basket.addToBasket(punch)
+        if self.basket.addToBasket(punch) == "out of stock":
+            self.errorMsg.setText("Out of stock!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return
 
         self.basketTable.setRowCount(self.basket.getBasketSize())
 
@@ -134,14 +202,26 @@ class POS(QMainWindow):
             self.basketTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(v.getPrice())))    
 
             tableRow += 1
-
+        
         self.basketTable.scrollToBottom()
 
+        
+
         if self.basket.getBasketSize() > 0:
+            self.subtotal.setText(str(self.basket.getSubtotal()))
+            self.totalVat.setText(str(self.basket.vatTotal()))
             self.total.setText(str(self.basket.getTotal()))
+            self.subtotalLabel.setVisible(True)
+            self.subtotal.setVisible(True)
+            self.vatLabel.setVisible(True)
+            self.totalVat.setVisible(True)
             self.totalLabel.setVisible(True)
             self.total.setVisible(True)
         else:
+            self.subtotalLabel.setVisible(False)
+            self.subtotal.setVisible(False)
+            self.vatLabel.setVisible(False)
+            self.totalVat.setVisible(False)
             self.totalLabel.setVisible(False)
             self.total.setVisible(False)
 
