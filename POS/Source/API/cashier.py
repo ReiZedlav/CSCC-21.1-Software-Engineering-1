@@ -43,6 +43,9 @@ class POS:
 
         self.discountedSubtotal = 0
     
+    def clearBasket(self):
+        self.basket = {}
+
     def getBasket(self):
         return self.basket
 
@@ -90,7 +93,36 @@ class POS:
 
         return self.discountedSubtotal
 
+class Invoice:
+    @staticmethod 
+    def recordPurchases(productid,invoiceid,quantity):
+        data = (productid,invoiceid,quantity)
 
+        query = """INSERT INTO records(productId,invoiceId,Quantity) VALUES (%s,%s,%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
+    @staticmethod
+    def getLastIssuedInvoice():
+        query = """SELECT LAST_INSERT_ID() FROM invoice LIMIT 1;"""
+
+        cursor.execute(query,)
+
+        result = cursor.fetchall()
+
+        return result
+
+    @staticmethod
+    def issueInvoice(userid,promotionid,totalcash,totalchange,totalamount):
+        data = (userid,promotionid,totalcash,totalchange,totalamount)
+
+        query = """INSERT INTO invoice(userId,promotionId,totalCash,totalChange,totalAmount) VALUES (%s,%s,%s,%s,%s);"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
 
 class Promotions:
     @staticmethod
@@ -105,6 +137,15 @@ class Promotions:
         return result
 
 class Inventory:
+    @staticmethod
+    def reduceStock(productid,amount):
+        data = (amount,productid)
+        query = """UPDATE products SET totalCount = totalCount - %s WHERE productId = %s;"""
+
+        cursor.execute(query,data)
+
+        connection.commit()
+
     @staticmethod
     def getProductIcon(iconid):
         query = """SELECT iconPath FROM icons WHERE iconId = %s"""

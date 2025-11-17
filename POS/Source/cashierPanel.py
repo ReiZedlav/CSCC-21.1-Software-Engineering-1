@@ -3,8 +3,7 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap
-from API import administrative
-from API import cashier
+from API import administrative,cashier,general
 import os
 
 class POS(QMainWindow):
@@ -123,7 +122,177 @@ class POS(QMainWindow):
                     QTimer.singleShot(5000, lambda: self.total.setText(str(self.basket.getTotal())))
                     
         elif mode == "Confirm":
-            pass
+            cash = self.cashForm.text()
+
+            print()
+
+            if self.promoForm.text() == "":
+                try:
+                    if float(cash) >= self.basket.getTotal():
+                        change = float(cash) - self.basket.getTotal()
+
+                        cashier.Invoice.issueInvoice(self.session["userID"],None,float(cash),change,self.basket.getTotal())
+
+                        invoiceId = cashier.Invoice.getLastIssuedInvoice()[0][0]
+
+                        for v in self.basket.getBasket().values():
+                            cashier.Invoice.recordPurchases(v.getIdentifier(),invoiceId,v.getAmount())
+                            cashier.Inventory.reduceStock(v.getIdentifier(),v.getAmount())
+
+                        general.Invoice.generateReceipt(self.basket.getBasket(),self.basket.getSubtotal(),self.basket.vatTotal(),self.basket.getTotal(),self.session["userID"],float(cash))
+
+                        self.basket.clearBasket()
+
+                        self.basketTable.setRowCount(self.basket.getBasketSize())
+
+                        tableRow = 0
+
+                        for k,v in self.basket.getBasket().items():
+                            self.basketTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(v.getIdentifier())))
+                            self.basketTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(v.getProductName()))
+                            self.basketTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(v.getAmount()))) 
+
+                        products = cashier.Inventory.searchProduct(self.categoryBox.currentData(),self.searchForm.text())
+
+                        if len(products) == 0:
+                            return
+        
+                        if len(products[0]) == 5:
+                            for data in products:
+                                self.productTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(data[0])))
+                                self.productTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(data[1])))
+                                self.productTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(data[2])))
+                                self.productTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(data[3])))
+                                self.productTable.setItem(tableRow,4,QtWidgets.QTableWidgetItem(str(data[4])))
+                                self.productTable.setItem(tableRow,5,QtWidgets.QTableWidgetItem(None))
+
+                            tableRow += 1
+                        
+                        elif len(products[0]) == 6:
+                            for data in products:
+                                self.productTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(data[0])))
+                                self.productTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(data[1])))
+                                self.productTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(data[2])))
+                                self.productTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(data[3])))
+                                self.productTable.setItem(tableRow,4,QtWidgets.QTableWidgetItem(str(data[4])))
+                                self.productTable.setItem(tableRow,5,QtWidgets.QTableWidgetItem(str(data[5])))
+
+                                tableRow += 1
+                        
+
+                        self.cashForm.clear()
+                        self.promoForm.clear()
+
+                        self.subtotalLabel.setVisible(False)
+
+                        self.subtotal.setVisible(False)
+                        self.vatLabel.setVisible(False)
+                        self.totalVat.setVisible(False)
+                        self.errorMsg.setVisible(False)
+                        self.totalLabel.setVisible(False)
+                        self.total.setVisible(False)
+                    
+                        return
+
+                    else:
+                        self.errorMsg.setText("Insuffient Funds!")
+                        self.errorMsg.setVisible(True)
+                        QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+                except ValueError:
+                    self.errorMsg.setText("Invalid Cash Input!")
+                    self.errorMsg.setVisible(True)
+                    QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+                    return
+            else:
+                promoDetails = cashier.Promotions.usePromoCode(self.promoForm.text())
+
+                print(promoDetails)
+
+                if len(promoDetails) == 0:
+                    self.errorMsg.setText("Invalid Coupon!")
+                    self.subtotal.setText(str(self.basket.getSubtotal()))
+                    self.totalVat.setText(str(self.basket.vatTotal()))
+                    self.total.setText(str(self.basket.getTotal()))
+                    self.errorMsg.setVisible(True)
+                    QTimer.singleShot(4000, lambda: self.errorMsg.setVisible(False))
+
+                    return
+
+                else:
+                    discountedSubTotal =  self.basket.useCoupon(float(promoDetails[0][3]) / 100)
+                    discountedVat = self.basket.getDiscountedVat()
+                    discountedTotal = self.basket.getDiscountedTotal()
+
+                    change = float(cash) - self.basket.getDiscountedTotal()
+
+                    self.subtotal.setText(str(discountedSubTotal))
+                    self.totalVat.setText(str(discountedVat))
+                    self.total.setText(str(discountedTotal))
+
+                    cashier.Invoice.issueInvoice(self.session["userID"],promoDetails[0][0],float(cash),change,self.basket.getDiscountedTotal())
+
+                    invoiceId = cashier.Invoice.getLastIssuedInvoice()[0][0]
+
+                    for v in self.basket.getBasket().values():
+                        cashier.Invoice.recordPurchases(v.getIdentifier(),invoiceId,v.getAmount())
+                        cashier.Inventory.reduceStock(v.getIdentifier(),v.getAmount())
+
+                    general.Invoice.generateReceipt(self.basket.getBasket(),self.basket.useCoupon(float(promoDetails[0][3]) / 100),self.basket.getDiscountedVat(),self.basket.getDiscountedTotal(),self.session["userID"],float(cash))
+
+                    self.basket.clearBasket()
+
+                    self.basketTable.setRowCount(self.basket.getBasketSize())
+
+                    tableRow = 0
+
+                    for k,v in self.basket.getBasket().items():
+                        self.basketTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(v.getIdentifier())))
+                        self.basketTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(v.getProductName()))
+                        self.basketTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(v.getAmount()))) 
+
+                    products = cashier.Inventory.searchProduct(self.categoryBox.currentData(),self.searchForm.text())
+
+                    if len(products) == 0:
+                        return
+        
+                    if len(products[0]) == 5:
+                        for data in products:
+                            self.productTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(data[0])))
+                            self.productTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(data[1])))
+                            self.productTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(data[2])))
+                            self.productTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(data[3])))
+                            self.productTable.setItem(tableRow,4,QtWidgets.QTableWidgetItem(str(data[4])))
+                            self.productTable.setItem(tableRow,5,QtWidgets.QTableWidgetItem(None))
+
+                            tableRow += 1
+                        
+                    elif len(products[0]) == 6:
+                        for data in products:
+                            self.productTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(data[0])))
+                            self.productTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(data[1])))
+                            self.productTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(data[2])))
+                            self.productTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(data[3])))
+                            self.productTable.setItem(tableRow,4,QtWidgets.QTableWidgetItem(str(data[4])))
+                            self.productTable.setItem(tableRow,5,QtWidgets.QTableWidgetItem(str(data[5])))
+
+                            tableRow += 1
+                    
+                    self.cashForm.clear()
+                    self.promoForm.clear()
+
+                    self.subtotalLabel.setVisible(False)
+                    self.subtotal.setVisible(False)
+                    self.vatLabel.setVisible(False)
+                    self.totalVat.setVisible(False)
+                    self.errorMsg.setVisible(False)
+                    self.totalLabel.setVisible(False)
+                    self.total.setVisible(False)
+
+                    return
+
+
+
+            
 
 
 
@@ -182,6 +351,12 @@ class POS(QMainWindow):
             row_data.append(item.text() if item else "")
         
         print(row_data)
+
+        if int(row_data[4]) == 0:
+            self.errorMsg.setText("Out of stock!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return
 
         punch = cashier.Product(row_data[0],row_data[1],row_data[2],row_data[4])
 

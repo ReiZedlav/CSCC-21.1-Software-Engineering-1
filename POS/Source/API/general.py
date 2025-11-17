@@ -1,11 +1,69 @@
 from PIL import Image
 import mysql.connector
 import bcrypt
+import calendar
+import datetime
+import os
 
 #everything thats not administrative or used by cashier belongs here.
 
 connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
+
+class Invoice:
+    @staticmethod
+    def generateReceipt(basket,subtotal,vat,total,cashierid,cash):
+        ct = datetime.datetime.now()
+        filename = str(int(ct.timestamp()))
+        
+        date = ct.strftime("%Y-%m-%d")
+
+        receipt = f"""
+        D-TWO HARDWARE STORE
+        XAVIER UNIVERSITY - ATENEO DE CAGAYAN
+        CAGAYAN DE ORO CITY
+        __________________________________________
+
+        Transaction Handled by cashier: {cashierid}
+        
+        Transaction Occured On: {date}
+        __________________________________________
+
+        ------------------------------------------
+        SALES INVOICE
+        ------------------------------------------
+        """
+
+        receipt += "\n"
+
+        for k in basket.values():
+            receipt += "        " + str(k.getAmount()) + " " + k.getProductName() + " - " + str(k.getPrice() * k.getAmount()) 
+            receipt += "\n"
+        
+        receipt += "        " + "__________________________________________"
+        receipt += "\n"
+        receipt += "\n"
+        receipt += "        " + "Cash: " + str(cash)
+        receipt += "\n"
+        receipt += "        " + "Subtotal: " + str(subtotal)
+        receipt += "\n"
+        receipt += "        " + "VAT (12%): " + str(vat)
+        receipt += "\n"
+        receipt += "        " + "Total: " + str(total)
+        receipt += "\n"
+        receipt += "        " + "__________________________________________"
+        receipt += "\n"
+        receipt += "\n"
+        receipt += "        " + "Thank you for shoping with us! Please come again!"
+
+        print(receipt)
+        with open(f"../../Receipts/{filename}.txt", "w") as file:
+            file.write(receipt)
+
+        
+            
+            
+
 
 class Icons:
     @staticmethod 
