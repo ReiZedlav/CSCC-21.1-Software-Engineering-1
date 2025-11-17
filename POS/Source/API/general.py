@@ -12,7 +12,7 @@ cursor = connection.cursor(prepared=True)
 
 class Invoice:
     @staticmethod
-    def generateReceipt(basket,subtotal,vat,total,cashierid,cash):
+    def generateReceipt(basket,subtotal,vat,total,cashierid,cash,invoiceid):
         ct = datetime.datetime.now()
         filename = str(int(ct.timestamp()))
         
@@ -23,6 +23,8 @@ class Invoice:
         XAVIER UNIVERSITY - ATENEO DE CAGAYAN
         CAGAYAN DE ORO CITY
         __________________________________________
+
+        Invoice ID: {invoiceid}
 
         Transaction Handled by cashier: {cashierid}
         

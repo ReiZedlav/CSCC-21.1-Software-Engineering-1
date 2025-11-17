@@ -139,7 +139,7 @@ class POS(QMainWindow):
                             cashier.Invoice.recordPurchases(v.getIdentifier(),invoiceId,v.getAmount())
                             cashier.Inventory.reduceStock(v.getIdentifier(),v.getAmount())
 
-                        general.Invoice.generateReceipt(self.basket.getBasket(),self.basket.getSubtotal(),self.basket.vatTotal(),self.basket.getTotal(),self.session["userID"],float(cash))
+                        general.Invoice.generateReceipt(self.basket.getBasket(),self.basket.getSubtotal(),self.basket.vatTotal(),self.basket.getTotal(),self.session["userID"],float(cash),invoiceId)
 
                         self.basket.clearBasket()
 
@@ -237,7 +237,7 @@ class POS(QMainWindow):
                         cashier.Invoice.recordPurchases(v.getIdentifier(),invoiceId,v.getAmount())
                         cashier.Inventory.reduceStock(v.getIdentifier(),v.getAmount())
 
-                    general.Invoice.generateReceipt(self.basket.getBasket(),self.basket.useCoupon(float(promoDetails[0][3]) / 100),self.basket.getDiscountedVat(),self.basket.getDiscountedTotal(),self.session["userID"],float(cash))
+                    general.Invoice.generateReceipt(self.basket.getBasket(),self.basket.useCoupon(float(promoDetails[0][3]) / 100),self.basket.getDiscountedVat(),self.basket.getDiscountedTotal(),self.session["userID"],float(cash),invoiceId)
 
                     self.basket.clearBasket()
 
