@@ -11,12 +11,16 @@ class Product:
         self.stock = int(stock)
         self.amount = 1
     
-    def increment(self):
+    def checkLimit(self):
         if self.amount == self.stock:
             return "out of stock"
 
-        if self.amount < self.stock:
-            self.amount += 1
+    def increment(self):
+        self.amount < self.stock
+        
+        self.amount += 1
+        
+        return
 
     def getPrice(self):
         return self.price
@@ -54,12 +58,14 @@ class POS:
 
     def addToBasket(self,product):
         if product.getIdentifier() in self.basket:
-            if self.basket[product.getIdentifier()].increment() == "out of stock":
+            if self.basket[product.getIdentifier()].checkLimit() == "out of stock":
                 return "out of stock"
             else:
                 self.basket[product.getIdentifier()].increment()
+                return
         else:
             self.basket[product.getIdentifier()] = product
+            return
     
     def getTotal(self):
         return self.getSubtotal() + self.vatTotal()
