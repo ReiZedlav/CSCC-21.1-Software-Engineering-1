@@ -9,7 +9,7 @@ DB_CONFIG = {
     "host": "localhost",
     "database": "pos",
     "user": "root",
-    "password": "root",
+    "password": "",
 }
 
 try:

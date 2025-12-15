@@ -5,6 +5,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.uic import loadUi
 from API import administrative
 from admin.pages import Pages
+from admin.logout import LogoutHandler
 
 class Promotions(QMainWindow):
     def __init__(self,session,widget):
@@ -32,7 +33,6 @@ class Promotions(QMainWindow):
         header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
 
         self.errorMsg.setVisible(False)
-        self.editPromo.setVisible(False)
 
         # Button change panels
 
@@ -41,10 +41,13 @@ class Promotions(QMainWindow):
         self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
-
+        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout(self.widget))
+        
         #events
         self.promotionTable.cellClicked.connect(self.rowClick)
         self.addPromo.clicked.connect(self.newPromo)
+        self.deletePromo.clicked.connect(self.delPromo)
+        self.editPromo.clicked.connect(self.modifyPromo)
 
         tableRow = 0
 
@@ -67,31 +70,92 @@ class Promotions(QMainWindow):
             QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
             return 
 
-        promos = administrative.Promotions.getPromos()
-        
-        self.promotionTable.setRowCount(len(promos))
+        self.refreshTable()
+        self.clearForm()
 
-        tableRow = 0
+    def delPromo(self):
 
-        for row in promos:
-            self.promotionTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
-            self.promotionTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
-            self.promotionTable.setItem(tableRow,2,QtWidgets.QTableWidgetItem(str(row[2])))
-            self.promotionTable.setItem(tableRow,3,QtWidgets.QTableWidgetItem(str(row[3])))
-            self.promotionTable.setItem(tableRow,4,QtWidgets.QTableWidgetItem(str(row[4])))
+        if not hasattr(self, 'selected_row_data'):
+            self.errorMsg.setVisible(True)
+            self.errorMsg.setText("Please select a promotion to delete!")
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return
+    
+        try:
+            promotionId = self.selected_row_data[0]
+            administrative.Promotions.removePromo(promotionId)
+        except mysql.connector.errors.DatabaseError:
+            self.errorMsg.setVisible(True)
+            self.errorMsg.setText("Delete Failed!")
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return 
 
-            tableRow += 1
+        self.refreshTable()
+        self.clearForm()
 
-        self.promotionNameForm.clear()
-        self.promotionCodeForm.clear()
-        self.discountForm.clear()
-        self.minimumPurchaseForm.clear()
+    def modifyPromo(self):
 
-    def rowClick(self,row,column):
-        row_data = []
+        if not hasattr(self, 'selected_row_data'):
+            self.errorMsg.setVisible(True)
+            self.errorMsg.setText("Please select a promotion to edit")
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return
 
+        try:   
+            promotion_id = self.selected_row_data[0]
+            administrative.Promotions.updatePromo(
+                promotion_id,
+                self.promotionNameForm.text(),
+                self.promotionCodeForm.text(),
+                self.discountForm.text(),
+                self.minimumPurchaseForm.text()
+            )
+
+        except mysql.connector.errors.DatabaseError:
+            self.errorMsg.setVisible(True)
+            self.errorMsg.setText("Invalid Fields!")
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return 
+
+
+        self.refreshTable()
+        self.clearForm()
+    
+    def rowClick(self, row, column):
+        self.selected_row_data = []
+        self.selected_row_index = row 
+    
         for col in range(self.promotionTable.columnCount()):
             item = self.promotionTable.item(row, col)
-            row_data.append(item.text() if item else "")
-        
-        print(row_data)
+            self.selected_row_data.append(item.text() if item else "")
+    
+        self.promotionNameForm.setText(self.selected_row_data[1])  # Name
+        self.promotionCodeForm.setText(self.selected_row_data[2])  # Code
+        self.discountForm.setText(self.selected_row_data[3])       # Discount
+        self.minimumPurchaseForm.setText(self.selected_row_data[4]) # Min Purchase
+    
+        print(f"Selected: {self.selected_row_data}")
+
+    def refreshTable(self):
+        promos = administrative.Promotions.getPromos()
+        self.promotionTable.setRowCount(len(promos))
+    
+        tableRow = 0
+        for row in promos:
+            self.promotionTable.setItem(tableRow, 0, QtWidgets.QTableWidgetItem(str(row[0])))
+            self.promotionTable.setItem(tableRow, 1, QtWidgets.QTableWidgetItem(str(row[1])))
+            self.promotionTable.setItem(tableRow, 2, QtWidgets.QTableWidgetItem(str(row[2])))
+            self.promotionTable.setItem(tableRow, 3, QtWidgets.QTableWidgetItem(str(row[3])))
+            self.promotionTable.setItem(tableRow, 4, QtWidgets.QTableWidgetItem(str(row[4])))
+            tableRow += 1
+
+    def clearForm(self):
+        self.promotionNameForm.clear()
+        self.promotionCodeForm.clear() 
+        self.discountForm.clear()
+        self.minimumPurchaseForm.clear()
+        # Clear the selection data
+        if hasattr(self, 'selected_row_data'):
+            del self.selected_row_data
+        if hasattr(self, 'selected_row_index'):
+            del self.selected_row_index

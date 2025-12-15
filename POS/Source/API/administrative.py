@@ -1,8 +1,9 @@
 import mysql.connector
 import bcrypt
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
 cursor = connection.cursor(prepared=True)
+
 
 class Promotions:
     @staticmethod
@@ -23,6 +24,26 @@ class Promotions:
         result = cursor.fetchall()
 
         return result
+    
+    @staticmethod
+    def updatePromo(promoId, pname,pcode,pdiscount,pminimumpurchase):
+        query = """
+        UPDATE promotions 
+        SET promotionName = %s, promotionCode = %s, discount = %s, minimumPurchase = %s
+        WHERE promotionId = %s
+        """
+        data = (pname,pcode,pdiscount,pminimumpurchase,promoId)
+        cursor.execute(query,data)
+
+        connection.commit()
+
+
+    @staticmethod
+    def removePromo(promoId):
+        query = "DELETE FROM promotions WHERE promotionId = %s"
+        values = (promoId,)
+        cursor.execute(query, values)
+        connection.commit()
 
 class Logging:
 

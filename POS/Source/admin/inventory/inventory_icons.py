@@ -4,6 +4,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtGui import QPixmap
 from API import administrative, general
 from admin.pages import Pages
+from admin.logout import LogoutHandler
 import mysql.connector
 import os
 import re
@@ -42,7 +43,7 @@ class InventoryIcons(QMainWindow):
         self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
-
+        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout(self.widget))
         
 
         #pixmap

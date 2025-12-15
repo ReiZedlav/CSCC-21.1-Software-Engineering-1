@@ -33,26 +33,20 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>40</y>
-       <width>55</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Hello,</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
        <y>80</y>
-       <width>91</width>
-       <height>21</height>
+       <width>171</width>
+       <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>[USERNAME]</string>
+      <string>Statistics</string>
      </property>
     </widget>
     <widget class="QPushButton" name="statButton">
@@ -125,7 +119,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>120</y>
+      <y>110</y>
       <width>621</width>
       <height>431</height>
      </rect>
@@ -139,11 +133,18 @@
     <widget class="QLabel" name="salesOverview">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>10</x>
        <y>10</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Sales Overview</string>
@@ -152,11 +153,18 @@
     <widget class="QLabel" name="totalLabel">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>442</x>
        <y>20</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Total</string>
@@ -165,7 +173,7 @@
     <widget class="QLabel" name="todayLabel">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>31</x>
        <y>60</y>
        <width>55</width>
        <height>16</height>
@@ -322,7 +330,7 @@
      <property name="geometry">
       <rect>
        <x>420</x>
-       <y>220</y>
+       <y>242</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -335,7 +343,7 @@
      <property name="geometry">
       <rect>
        <x>420</x>
-       <y>250</y>
+       <y>269</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -348,7 +356,7 @@
      <property name="geometry">
       <rect>
        <x>420</x>
-       <y>280</y>
+       <y>301</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -361,7 +369,7 @@
      <property name="geometry">
       <rect>
        <x>420</x>
-       <y>320</y>
+       <y>341</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -374,7 +382,7 @@
      <property name="geometry">
       <rect>
        <x>420</x>
-       <y>370</y>
+       <y>381</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -409,32 +417,6 @@
       <string>[YEARLY TOTAL]</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>40</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Statistics</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>55</y>
-      <width>381</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>pls group this. wla ni nka frame. igo rani ga fetch ug data</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="logoutButton">
     <property name="geometry">

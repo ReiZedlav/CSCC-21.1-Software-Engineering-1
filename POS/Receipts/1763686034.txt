@@ -1,0 +1,27 @@
+
+        D-TWO HARDWARE STORE
+        XAVIER UNIVERSITY - ATENEO DE CAGAYAN
+        CAGAYAN DE ORO CITY
+        __________________________________________
+
+        Invoice ID: 13
+
+        Transaction Handled by cashier: 23
+        
+        Transaction Occured On: 2025-11-21
+        __________________________________________
+
+        ------------------------------------------
+        SALES INVOICE
+        ------------------------------------------
+        
+        1 Box of Nails - 5.0
+        __________________________________________
+
+        Cash: 6.0
+        Subtotal: 5.0
+        VAT (12%): 0.6
+        Total: 5.6
+        __________________________________________
+
+        Thank you for shoping with us! Please come again!

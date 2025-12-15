@@ -1,0 +1,27 @@
+
+        D-TWO HARDWARE STORE
+        XAVIER UNIVERSITY - ATENEO DE CAGAYAN
+        CAGAYAN DE ORO CITY
+        __________________________________________
+
+        Invoice ID: 68
+
+        Transaction Handled by cashier: 23
+        
+        Transaction Occured On: 2025-11-17
+        __________________________________________
+
+        ------------------------------------------
+        SALES INVOICE
+        ------------------------------------------
+        
+        7 Hammer - 105.0
+        __________________________________________
+
+        Cash: 200.0
+        Subtotal: 105.0
+        VAT (12%): 12.6
+        Total: 117.6
+        __________________________________________
+
+        Thank you for shoping with us! Please come again!

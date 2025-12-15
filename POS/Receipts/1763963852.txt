@@ -1,0 +1,28 @@
+
+        D-TWO HARDWARE STORE
+        XAVIER UNIVERSITY - ATENEO DE CAGAYAN
+        CAGAYAN DE ORO CITY
+        __________________________________________
+
+        Invoice ID: 14
+
+        Transaction Handled by cashier: 23
+        
+        Transaction Occured On: 2025-11-24
+        __________________________________________
+
+        ------------------------------------------
+        SALES INVOICE
+        ------------------------------------------
+        
+        1 Screwdriver Set - 25.0
+        1 Circular Saw - 120.0
+        __________________________________________
+
+        Cash: 214.0
+        Subtotal: 145.0
+        VAT (12%): 17.4
+        Total: 162.4
+        __________________________________________
+
+        Thank you for shoping with us! Please come again!

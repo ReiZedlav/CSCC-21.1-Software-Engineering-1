@@ -71,3 +71,6 @@ class Pages:
         panel = EditEmployee(session,widget,cashierId)
         widget.addWidget(panel)
         widget.setCurrentIndex(widget.currentIndex() + 1)
+
+
+

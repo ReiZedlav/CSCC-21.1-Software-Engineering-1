@@ -29,32 +29,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="greeting">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>55</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Hello,</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>80</y>
-       <width>91</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>[USERNAME]</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="statButton">
      <property name="geometry">
       <rect>
@@ -121,7 +95,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="logoutButton">
     <property name="geometry">
      <rect>
       <x>880</x>
@@ -147,8 +121,8 @@
    <widget class="QLineEdit" name="promotionNameForm">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>480</y>
+      <x>320</x>
+      <y>490</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -157,8 +131,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>450</y>
+      <x>326</x>
+      <y>469</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -170,7 +144,7 @@
    <widget class="QLineEdit" name="promotionCodeForm">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>600</x>
       <y>490</y>
       <width>131</width>
       <height>41</height>
@@ -180,8 +154,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>450</y>
+      <x>603</x>
+      <y>468</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -193,8 +167,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>450</y>
+      <x>464</x>
+      <y>469</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -206,10 +180,10 @@
    <widget class="QPushButton" name="addPromo">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>580</y>
-      <width>181</width>
-      <height>28</height>
+      <x>320</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -219,7 +193,7 @@
    <widget class="QLineEdit" name="discountForm">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>460</x>
       <y>490</y>
       <width>131</width>
       <height>41</height>
@@ -229,8 +203,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>560</y>
+      <x>744</x>
+      <y>470</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -242,8 +216,8 @@
    <widget class="QLineEdit" name="minimumPurchaseForm">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>590</y>
+      <x>740</x>
+      <y>490</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -252,8 +226,8 @@
    <widget class="QLabel" name="errorMsg">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>505</y>
+      <x>320</x>
+      <y>600</y>
       <width>181</width>
       <height>41</height>
      </rect>
@@ -265,27 +239,47 @@
    <widget class="QPushButton" name="editPromo">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>580</y>
-      <width>181</width>
-      <height>28</height>
+      <x>600</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>Edit Promo</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QPushButton" name="deletePromo">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>630</y>
-      <width>471</width>
-      <height>16</height>
+      <x>460</x>
+      <y>540</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Note: Duha ni ka button. Edit Promo ug Add promo pero nka stack lng</string>
+     <string>Delete Promo</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="greeting_2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>80</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>22</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Promotions</string>
     </property>
    </widget>
   </widget>

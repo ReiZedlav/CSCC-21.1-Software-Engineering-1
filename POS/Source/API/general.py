@@ -7,7 +7,7 @@ import os
 
 #everything thats not administrative or used by cashier belongs here.
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
 cursor = connection.cursor(prepared=True)
 
 class Invoice:
@@ -59,12 +59,8 @@ class Invoice:
         receipt += "        " + "Thank you for shoping with us! Please come again!"
 
         print(receipt)
-        with open(f"../../Receipts/{filename}.txt", "w") as file:
+        with open(f"../Receipts/{filename}.txt", "w") as file:
             file.write(receipt)
-
-        
-            
-            
 
 
 class Icons:
@@ -82,42 +78,54 @@ class Icons:
 
 class Utils():
     @staticmethod
-    def login(username,password):
+    def login(username, password):
         data = (username,)
-        query = """SELECT userId,roleId,HashedPassword FROM Users WHERE username = %s"""
+        query = """SELECT userId, roleId, HashedPassword FROM Users WHERE username = %s"""
         
-        cursor.execute(query,data)
+        cursor.execute(query, data)
         result = cursor.fetchall()
 
-        print(result)
 
-        #keep track of user, and authorization. 
-        cookies = {
-            "userID": None,
-            "roleID": None
-        }
-
-        try:
-            cookies["userID"] = result[0][0]
-            cookies["roleID"] = result[0][1]
-            bcryptPassword = result[0][2]
-        except IndexError:
-            print(cookies)
+        if not result:
             return None
+
         try:
-            verified = bcrypt.checkpw(password.encode('utf-8'),bcryptPassword.encode('utf-8'))
+            user_id = result[0][0]
+            role_id = result[0][1]
+            bcryptPassword = result[0][2]
             
-            if verified:
-
-                return cookies
-
-            else:
-                print(cookies)
+            print(f"User ID: {user_id}")
+            print(f"Role ID: {role_id}") 
+            print(f"Stored password: {bcryptPassword}")
+            print(f"Input password: {password}")
+            
+            if not bcryptPassword:
                 return None
             
-        except UnboundLocalError:
-            print(cookies)
+            print(f"Password type: {type(bcryptPassword)}")
+            print(f"Password encoded: {bcryptPassword.encode('utf-8')}")
+            
+            verified = bcrypt.checkpw(password.encode('utf-8'), bcryptPassword.encode('utf-8'))
+            
+            print(f"Password verified: {verified}")
+            
+            if verified:
+                cookies = {
+                    "userID": user_id,
+                    "roleID": role_id
+                }
+                print(f"Login successful: {cookies}")
+                return cookies
+            else:
+                print("Password verification failed")
+                return None
+            
+        except ValueError as e:
+            print(f"Value error details: {e}")
+            print(f"Error type: {type(e)}")
             return None
-        except ValueError:
-            print(cookies)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            import traceback
+            traceback.print_exc()
             return None

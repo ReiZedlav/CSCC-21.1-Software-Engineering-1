@@ -1,0 +1,27 @@
+
+        D-TWO HARDWARE STORE
+        XAVIER UNIVERSITY - ATENEO DE CAGAYAN
+        CAGAYAN DE ORO CITY
+        __________________________________________
+
+        Transaction Handled by cashier: 23
+        
+        Transaction Occured On: 2025-11-17
+        __________________________________________
+
+        ------------------------------------------
+        SALES INVOICE
+        ------------------------------------------
+        
+        1 Adjustable Wrench - 18.0
+        3 Screwdriver Set - 75.0
+        1 Hammer - 15.0
+        __________________________________________
+
+        Cash: 130.0
+        Subtotal: 108.0
+        VAT (12%): 12.959999999999999
+        Total: 120.96
+        __________________________________________
+
+        Thank you for shoping with us! Please come again!

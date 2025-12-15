@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic import loadUi
 from API import administrative
 from admin.pages import Pages
+from admin.logout import LogoutHandler
 
 class InventoryEdit(QMainWindow):
     def __init__(self,session,widget,productId):
@@ -43,7 +44,7 @@ class InventoryEdit(QMainWindow):
         self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
-
+        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout(self.widget))
 
         #table click events
         self.categoryTable.cellDoubleClicked.connect(self.deleteRow)

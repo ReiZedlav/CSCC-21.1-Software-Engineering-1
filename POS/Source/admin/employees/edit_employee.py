@@ -4,6 +4,7 @@ from PyQt5.QtCore import QTimer
 import mysql.connector
 from API import administrative
 from admin.pages import Pages
+from admin.logout import LogoutHandler
 
 class EditEmployee(QMainWindow):
     def __init__(self,session,widget,cashierId):
@@ -30,7 +31,7 @@ class EditEmployee(QMainWindow):
         self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
-
+        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout(self.widget))
     
         #initialiazed
         self.errorMsg.setVisible(False)

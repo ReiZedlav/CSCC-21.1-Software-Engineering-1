@@ -1,0 +1,30 @@
+
+        D-TWO HARDWARE STORE
+        XAVIER UNIVERSITY - ATENEO DE CAGAYAN
+        CAGAYAN DE ORO CITY
+        __________________________________________
+
+        Invoice ID: 11
+
+        Transaction Handled by cashier: 23
+        
+        Transaction Occured On: 2025-11-18
+        __________________________________________
+
+        ------------------------------------------
+        SALES INVOICE
+        ------------------------------------------
+        
+        16 White Paint 1L - 320.0
+        5 Workbench - 1000.0
+        25 Wood Chisel - 350.0
+        6 Box of Nails - 30.0
+        __________________________________________
+
+        Cash: 2000.0
+        Subtotal: 1700.0
+        VAT (12%): 204.0
+        Total: 1904.0
+        __________________________________________
+
+        Thank you for shoping with us! Please come again!
