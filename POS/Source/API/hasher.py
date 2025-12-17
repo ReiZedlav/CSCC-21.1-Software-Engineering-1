@@ -8,7 +8,7 @@ def hash_password(password):
     return hashed_password.decode('utf-8')  # Convert bytes to string for storage
 
 # Example usage:
-password = "1"
+password = "2"
 hashed = hash_password(password)
 print(f"Original: {password}")
 print(f"Hashed: {hashed}")

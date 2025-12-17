@@ -28,7 +28,9 @@ CREATE TABLE IF NOT EXISTS Users(
 
 INSERT INTO Users (firstName,middleName,lastName,userName,HashedPassword,roleId) 
     VALUES
-        ("Andrei Albertson","Lungay","Valdez","admin","admin",1);
+        ("Andrei Albertson","Lungay","Valdez","admin","$2b$12$K6ctrXksgBYWJVLZbpI/MuF0wc5H4SLxt0XdmZ51GUz.kT2ZcZxs2",1),
+        ("Mr Sheng", "Zerna", "Sheng", "1","$2b$12$qsRCeSvqk6jj9O/P1Jz9S.4pPqLR8j7tyy6xQZJeY6wEPVpDQIrdK", 1),
+        ("Mr Sheng", "Zerna", "Sheng", "2","$2b$12$HpQwBp5snx/xUiK55/vgKOCaB8.CL32BaEjOs.I3Vju2qOolayIii", 2);
 
 CREATE TABLE IF NOT EXISTS Icons(
     iconId INT AUTO_INCREMENT PRIMARY KEY,
