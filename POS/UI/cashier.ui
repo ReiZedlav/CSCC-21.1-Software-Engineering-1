@@ -14,7 +14,7 @@
    <string>Login</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="logoutButton">
     <property name="geometry">
      <rect>
       <x>1060</x>
@@ -51,9 +51,9 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>90</y>
+      <y>130</y>
       <width>311</width>
-      <height>341</height>
+      <height>411</height>
      </rect>
     </property>
    </widget>
@@ -97,7 +97,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>80</y>
+      <y>130</y>
       <width>300</width>
       <height>300</height>
      </rect>
@@ -119,9 +119,9 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>540</y>
+      <y>590</y>
       <width>151</width>
-      <height>51</height>
+      <height>30</height>
      </rect>
     </property>
    </widget>
@@ -129,9 +129,9 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>600</y>
-      <width>211</width>
-      <height>61</height>
+      <y>630</y>
+      <width>201</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -142,10 +142,17 @@
     <property name="geometry">
      <rect>
       <x>1010</x>
-      <y>550</y>
+      <y>590</y>
       <width>71</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Coupon</string>
@@ -155,9 +162,9 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>470</y>
+      <y>550</y>
       <width>151</width>
-      <height>51</height>
+      <height>30</height>
      </rect>
     </property>
    </widget>
@@ -165,36 +172,37 @@
     <property name="geometry">
      <rect>
       <x>1010</x>
-      <y>480</y>
+      <y>550</y>
       <width>71</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
      <string>Cash</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>385</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Pls rearrange everything.</string>
     </property>
    </widget>
    <widget class="QLabel" name="subtotalLabel">
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>450</y>
+      <y>460</y>
       <width>81</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Sub Total:</string>
@@ -203,27 +211,14 @@
    <widget class="QLabel" name="subtotal">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>450</y>
+      <x>640</x>
+      <y>466</y>
       <width>141</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>[INVISIBLE SUB TOTAL]</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>410</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>everything below is invisible btw</string>
     </property>
    </widget>
    <widget class="QLabel" name="errorMsg">
@@ -243,10 +238,17 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>490</y>
+      <y>500</y>
       <width>81</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>VAT (12%):</string>
@@ -256,7 +258,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>490</y>
+      <y>505</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -274,6 +276,13 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
      <string>Total:</string>
     </property>
@@ -281,8 +290,8 @@
    <widget class="QLabel" name="total">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>540</y>
+      <x>640</x>
+      <y>545</y>
       <width>141</width>
       <height>31</height>
      </rect>

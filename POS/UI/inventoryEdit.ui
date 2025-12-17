@@ -331,32 +331,6 @@
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>40</y>
-      <width>311</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>WARNING: THIS IS PRODUCT EDIT PAGE</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>30</y>
-      <width>271</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>remember: product has multiple categories</string>
-    </property>
-   </widget>
   </widget>
  </widget>
  <resources/>

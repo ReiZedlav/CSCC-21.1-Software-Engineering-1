@@ -37,6 +37,8 @@ class InventoryEdit(QMainWindow):
         self.overwriteButton.clicked.connect(self.updateProduct)        
         self.addCategory.clicked.connect(self.categorizeProduct)
         self.returnButton.clicked.connect(lambda: Pages.gotoInventoryProduct(self.session,self.widget))
+        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout)
+        self.newCategory_2.clicked.connect(self.newCategory)
 
         # buttons change panels
         self.cashierButton.clicked.connect(lambda: Pages.gotoEmployees(self.session,self.widget))
@@ -44,7 +46,7 @@ class InventoryEdit(QMainWindow):
         self.logButton.clicked.connect(lambda: Pages.gotoLogs(self.session,self.widget))
         self.statButton.clicked.connect(lambda: Pages.gotoStatistics(self.session,self.widget))
         self.promotionButton.clicked.connect(lambda: Pages.gotoPromotions(self.session,self.widget))
-        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout(self.widget))
+
 
         #table click events
         self.categoryTable.cellDoubleClicked.connect(self.deleteRow)
@@ -106,7 +108,6 @@ class InventoryEdit(QMainWindow):
             self.categoryBox.addItem(row[1], row[0])
         self.verifyAvailability()
 
-        
 
     def deleteRow(self,row,column):
         row_data = []
@@ -136,8 +137,24 @@ class InventoryEdit(QMainWindow):
             self.categoryBox.addItem(row[1], row[0])
         self.verifyAvailability()
 
+    def newCategory(self):
+        administrative.Inventory.addCategory(self.categoryForm.text())
 
-        
+        categories = administrative.Inventory.getSpecificProductCategory(self.productId)
+        for row in categories:
+            self.categoryTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
+            self.categoryTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))
+            tableRow += 1
+
+        categoryListing = administrative.Inventory.getSpecificCategoryListing(self.productId)
+
+        self.categoryBox.clear()
+
+        for row in categoryListing:
+            self.categoryBox.addItem(row[1], row[0])
+        self.verifyAvailability()
+
+    
         
     def updateProduct(self):
         productname = self.productnameForm.text()

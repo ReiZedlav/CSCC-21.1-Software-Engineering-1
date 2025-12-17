@@ -4,6 +4,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap
 from API import administrative,cashier,general
+from admin.logout import LogoutHandler
 import os
 
 class POS(QMainWindow):
@@ -24,6 +25,7 @@ class POS(QMainWindow):
         self.productTable.cellDoubleClicked.connect(self.addToBasket)
         self.basketTable.cellClicked.connect(self.removeToBasket)
         self.checkoutButton.clicked.connect(self.checkout)
+        self.logoutButton.clicked.connect(lambda: LogoutHandler.logout(self.widget))
 
         self.categoryBox.addItem("Any", None)
 
@@ -95,7 +97,8 @@ class POS(QMainWindow):
             
             else:
                 promoDetails = cashier.Promotions.usePromoCode(self.promoForm.text())
-                
+                print(promoDetails)
+
                 if len(promoDetails) == 0:
                     self.errorMsg.setText("Invalid Coupon!")
                     self.subtotal.setText(str(self.basket.getSubtotal()))

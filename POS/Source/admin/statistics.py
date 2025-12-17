@@ -24,19 +24,24 @@ class Statistics(QMainWindow):
         self.monthlyTotal.setText(str(administrative.Statistics.getMonthlyTotal()[0][0]))
         self.yearlyTotal.setText(str(administrative.Statistics.getYearlyTotal()[0][0]))
         
-        #gets the top 5 sellers names.
-        self.topOne.setText(topFive[0][0])
-        self.topTwo.setText(topFive[1][0])
-        self.topThree.setText(topFive[2][0])
-        self.topFour.setText(topFive[3][0])
-        self.topFive.setText(topFive[4][0])
+        #try except incase walay sulod ang topFive
+        try:
+            #gets the top 5 sellers names.
+            self.topOne.setText(str(topFive[0][0]))
+            self.topTwo.setText(str(topFive[1][0]))
+            self.topThree.setText(str(topFive[2][0]))
+            self.topFour.setText(str(topFive[3][0]))
+            self.topFive.setText(str(topFive[4][0]))
 
-        #gets the top 5 sellers total sold.
-        self.countOne.setText(str(topFive[0][1]))
-        self.countTwo.setText(str(topFive[1][1]))
-        self.countThree.setText(str(topFive[2][1]))
-        self.countFour.setText(str(topFive[3][1]))
-        self.countFive.setText(str(topFive[4][1]))
+            #gets the top 5 sellers total sold.
+            self.countOne.setText(str(topFive[0][1]))
+            self.countTwo.setText(str(topFive[1][1]))
+            self.countThree.setText(str(topFive[2][1]))
+            self.countFour.setText(str(topFive[3][1]))
+            self.countFive.setText(str(topFive[4][1]))
+        except:
+            pass
+            #idk unsang ideal i fill para ani
 
         # Button change panels
 

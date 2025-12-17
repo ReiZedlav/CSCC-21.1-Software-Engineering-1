@@ -56,7 +56,7 @@ class Invoice:
         receipt += "        " + "__________________________________________"
         receipt += "\n"
         receipt += "\n"
-        receipt += "        " + "Thank you for shoping with us! Please come again!"
+        receipt += "        " + "Thank you for shopping with us! Please come again!"
 
         print(receipt)
         with open(f"../Receipts/{filename}.txt", "w") as file:

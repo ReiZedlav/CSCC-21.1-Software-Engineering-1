@@ -16,11 +16,11 @@ try:
     connection = mysql.connector.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
-    password = "administrator"
+    password = "1"
     hashed_bytes = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
     hashed_str = hashed_bytes.decode("utf-8")
 
-    data = ("sudo", "L.", "kernel", "administrator", hashed_str, 1)
+    data = ("Louie", "Z.", "Sheng", "1", hashed_str, 1)
 
     query = """
         INSERT INTO Users (firstName, middleName, lastName, userName, HashedPassword, roleId)
