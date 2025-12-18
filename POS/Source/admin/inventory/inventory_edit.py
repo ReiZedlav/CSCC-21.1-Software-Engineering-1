@@ -3,7 +3,9 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic import loadUi
 from API import administrative
 from admin.pages import Pages
+from PyQt5.QtCore import QTimer
 from admin.logout import LogoutHandler
+import mysql.connector
 
 class InventoryEdit(QMainWindow):
     def __init__(self,session,widget,productId):
@@ -88,6 +90,7 @@ class InventoryEdit(QMainWindow):
     
     def categorizeProduct(self): 
         
+    
         administrative.Inventory.addProductCategory(self.productId,self.categoryBox.currentData())
 
         categories = administrative.Inventory.getSpecificProductCategory(self.productId)
@@ -138,9 +141,18 @@ class InventoryEdit(QMainWindow):
         self.verifyAvailability()
 
     def newCategory(self):
-        administrative.Inventory.addCategory(self.categoryForm.text())
+        try:
+            administrative.Inventory.addCategory(self.categoryForm.text())
+            self.categoryForm.clear()
+        except:
+            self.errorMsg.setText("That category already exists!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
 
         categories = administrative.Inventory.getSpecificProductCategory(self.productId)
+
+        tableRow = 0
+
         for row in categories:
             self.categoryTable.setItem(tableRow,0,QtWidgets.QTableWidgetItem(str(row[0])))
             self.categoryTable.setItem(tableRow,1,QtWidgets.QTableWidgetItem(str(row[1])))

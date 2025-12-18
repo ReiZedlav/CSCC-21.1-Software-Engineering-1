@@ -95,7 +95,20 @@ class InventoryAdd(QMainWindow):
         return self.selected
 
     def addCategory(self):
-        administrative.Inventory.addCategory(self.categoryForm.text())
+        if self.categoryForm.text().strip() == "":
+            self.errorMsg.setText("Category cannot be blank!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+            return 
+            
+        try:
+            administrative.Inventory.addCategory(self.categoryForm.text())
+        except:
+            self.errorMsg.setText("That category already exists!")
+            self.errorMsg.setVisible(True)
+            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
+
+            return 
 
         categories = administrative.Inventory.getCategories()
         self.categoryTable.setRowCount(len(categories))
