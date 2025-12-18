@@ -37,15 +37,23 @@ class EditEmployee(QMainWindow):
         self.errorMsg.setVisible(False)
 
     def initiateUpdate(self):
+        firstname = self.firstnameForm.text()
+        middlename = self.middlenameForm.text()
+        lastname = self.lastnameForm.text()
+        username = self.usernameForm.text()
+        password = self.passwordForm.text()
         
-        try:
-            administrative.Employees.updateCashier(self.cashierId,self.firstnameForm.text(),self.middlenameForm.text(),self.lastnameForm.text(),self.usernameForm.text(),self.passwordForm.text())
-            Pages.gotoEmployees(self.session,self.widget)
-
-        except mysql.connector.errors.IntegrityError:
-            print("Failed")
+        if (not firstname.strip() or not middlename.strip() or not lastname.strip() or not username.strip() or not password.strip()):
+            self.errorMsg.setText("Please fill all necessary information!")
             self.errorMsg.setVisible(True)
-            self.errorMsg.setText("That username is taken!")
-            QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
 
+        else:
+            try:
+                administrative.Employees.updateCashier(self.cashierId,self.firstnameForm.text(),self.middlenameForm.text(),self.lastnameForm.text(),self.usernameForm.text(),self.passwordForm.text())
+                Pages.gotoEmployees(self.session,self.widget)
 
+            except mysql.connector.errors.IntegrityError:
+                print("Failed")
+                self.errorMsg.setVisible(True)
+                self.errorMsg.setText("That username is taken!")
+                QTimer.singleShot(3000, lambda: self.errorMsg.setVisible(False))
