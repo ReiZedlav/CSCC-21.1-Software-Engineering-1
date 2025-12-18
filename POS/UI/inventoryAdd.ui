@@ -13,6 +13,16 @@
   <property name="windowTitle">
    <string>Admin Panel</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget {
+                background: qlineargradient(
+                    x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #e0f7fa,       /* top: soft pastel cyan */
+                    stop:0.5 #f9f9f9,     /* middle: very light gray */
+                    stop:1 #ffffff        /* bottom: pure white */
+                );
+            }</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="frame">
     <property name="geometry">
@@ -20,8 +30,19 @@
       <x>0</x>
       <y>0</y>
       <width>251</width>
-      <height>601</height>
+      <height>701</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff,
+            stop:1 #e6e6e6
+        );
+        border-radius: 15px;
+        border: 1px solid #d9d9d9;
+    }</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -38,6 +59,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Statistics</string>
      </property>
@@ -50,6 +82,17 @@
        <width>171</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
      </property>
      <property name="text">
       <string>Employees</string>
@@ -64,6 +107,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Inventory</string>
      </property>
@@ -76,6 +130,17 @@
        <width>171</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
      </property>
      <property name="text">
       <string>Promotions</string>
@@ -90,6 +155,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Logs</string>
      </property>
@@ -97,10 +173,10 @@
     <widget class="QLabel" name="greeting_2">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>30</x>
        <y>80</y>
-       <width>251</width>
-       <height>51</height>
+       <width>201</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
@@ -111,18 +187,43 @@
       </font>
      </property>
      <property name="text">
-      <string>Add Inventory</string>
+      <string>Inventory</string>
      </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="logoutButton">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>40</y>
+      <x>1080</x>
+      <y>30</y>
       <width>93</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff, stop:1 #e0e0e0
+        );
+        border: 1px solid #b3b3b3;
+        border-radius: 14px; /* half of height for fully rounded */
+        color: #333333;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    QPushButton:hover {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #f2f2f2, stop:1 #d9d9d9
+        );
+    }
+    QPushButton:pressed {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #d9d9d9, stop:1 #bfbfbf
+        );
+    }</string>
     </property>
     <property name="text">
      <string>logout</string>
@@ -131,11 +232,23 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>90</y>
-      <width>711</width>
+      <x>380</x>
+      <y>110</y>
+      <width>741</width>
       <height>481</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame#frame_2 {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff,       /* top: pure white */
+            stop:0.5 #f9f9f9,     /* middle: very light gray */
+            stop:1 #e0f7fa        /* bottom: soft pastel cyan */
+        );
+        border-radius: 20px;       /* rounded corners */
+        border: 1px solid #cccccc; /* subtle border */
+    }</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -152,6 +265,29 @@
        <height>281</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
+        background-color: #ffffff;
+        border: 2px solid #b0b0b0;  /* soft gray border */
+        border-radius: 12px;         /* rounded corners */
+        gridline-color: #e0e0e0;     /* subtle grid lines */
+        padding: 5px;
+    }
+    QHeaderView::section {
+        background-color: #f5f5f5;   /* light header */
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;          /* rounded header corners */
+        padding: 4px;
+        font-weight: bold;
+    }
+    QTableWidget::item {
+        padding: 6px;
+    }
+    QTableWidget::item:selected {
+        background-color: #cce7ff;  /* gentle selection color */
+        color: #000000;
+    }</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="productnameForm">
      <property name="geometry">
@@ -161,6 +297,20 @@
        <width>191</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="priceForm">
@@ -172,6 +322,20 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="stockForm">
      <property name="geometry">
@@ -182,15 +346,53 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
     </widget>
     <widget class="QComboBox" name="iconBox">
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>310</y>
+       <y>301</y>
        <width>201</width>
-       <height>22</height>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    padding: 5px 10px;
+    min-width: 6em;
+    background-color: #f0f0f0;
+    color: #2b2b2b;
+    font-size: 14px;
+}
+
+QComboBox:hover {
+    border: 2px solid #5a9bd5;
+    background-color: #e6f2ff;
+}
+
+QComboBox QAbstractItemView {
+    border: 2px solid #8f8f91;
+    background-color: #ffffff;
+    selection-background-color: #5a9bd5;
+    selection-color: #ffffff;
+    outline: none;
+}</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -236,7 +438,7 @@
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>290</y>
+       <y>280</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -254,6 +456,23 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+        background-color: #7e57c2;       /* friendly purple */
+        color: white;                     /* text color */
+        border: none;
+        border-radius: 8px;               /* moderately round */
+        padding: 8px 20px;                /* comfortable size */
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #9575cd;       /* slightly lighter purple on hover */
+    }
+    QPushButton:pressed {
+        background-color: #5e35b1;       /* darker purple when pressed */
+    }</string>
+     </property>
      <property name="text">
       <string>return</string>
      </property>
@@ -261,11 +480,28 @@
     <widget class="QPushButton" name="categoryAdd">
      <property name="geometry">
       <rect>
-       <x>590</x>
-       <y>380</y>
-       <width>101</width>
+       <x>440</x>
+       <y>370</y>
+       <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+        background-color: #7e57c2;       /* friendly purple */
+        color: white;                     /* text color */
+        border: none;
+        border-radius: 8px;               /* moderately round */
+        padding: 8px 20px;                /* comfortable size */
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #9575cd;       /* slightly lighter purple on hover */
+    }
+    QPushButton:pressed {
+        background-color: #5e35b1;       /* darker purple when pressed */
+    }</string>
      </property>
      <property name="text">
       <string>Add Category</string>
@@ -275,10 +511,24 @@
      <property name="geometry">
       <rect>
        <x>440</x>
-       <y>380</y>
-       <width>121</width>
+       <y>330</y>
+       <width>161</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
      </property>
     </widget>
     <widget class="QPushButton" name="productSubmit">
@@ -289,6 +539,23 @@
        <width>191</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+        background-color: #7e57c2;       /* friendly purple */
+        color: white;                     /* text color */
+        border: none;
+        border-radius: 8px;               /* moderately round */
+        padding: 8px 20px;                /* comfortable size */
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #9575cd;       /* slightly lighter purple on hover */
+    }
+    QPushButton:pressed {
+        background-color: #5e35b1;       /* darker purple when pressed */
+    }</string>
      </property>
      <property name="text">
       <string>Submit</string>

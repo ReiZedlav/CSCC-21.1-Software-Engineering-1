@@ -1,6 +1,6 @@
 import mysql.connector
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
 
 class Product:

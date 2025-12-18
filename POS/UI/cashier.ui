@@ -14,14 +14,49 @@
    <string>Login</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget {
+                background: qlineargradient(
+                    x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #e0f7fa,       /* top: soft pastel cyan */
+                    stop:0.5 #f9f9f9,     /* middle: very light gray */
+                    stop:1 #ffffff        /* bottom: pure white */
+                );
+            }</string>
+   </property>
    <widget class="QPushButton" name="logoutButton">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>40</y>
+      <x>1080</x>
+      <y>30</y>
       <width>93</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff, stop:1 #e0e0e0
+        );
+        border: 1px solid #b3b3b3;
+        border-radius: 14px; /* half of height for fully rounded */
+        color: #333333;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    QPushButton:hover {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #f2f2f2, stop:1 #d9d9d9
+        );
+    }
+    QPushButton:pressed {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #d9d9d9, stop:1 #bfbfbf
+        );
+    }</string>
     </property>
     <property name="text">
      <string>logout</string>
@@ -36,15 +71,62 @@
       <height>541</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget {
+        background-color: #ffffff;
+        border: 2px solid #b0b0b0;  /* soft gray border */
+        border-radius: 12px;         /* rounded corners */
+        gridline-color: #e0e0e0;     /* subtle grid lines */
+        padding: 5px;
+    }
+    QHeaderView::section {
+        background-color: #f5f5f5;   /* light header */
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;          /* rounded header corners */
+        padding: 4px;
+        font-weight: bold;
+    }
+    QTableWidget::item {
+        padding: 6px;
+    }
+    QTableWidget::item:selected {
+        background-color: #cce7ff;  /* gentle selection color */
+        color: #000000;
+    }</string>
+    </property>
    </widget>
    <widget class="QComboBox" name="categoryBox">
     <property name="geometry">
      <rect>
       <x>322</x>
-      <y>90</y>
+      <y>81</y>
       <width>171</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    padding: 5px 10px;
+    min-width: 6em;
+    background-color: #f0f0f0;
+    color: #2b2b2b;
+    font-size: 14px;
+}
+
+QComboBox:hover {
+    border: 2px solid #5a9bd5;
+    background-color: #e6f2ff;
+}
+
+QComboBox QAbstractItemView {
+    border: 2px solid #8f8f91;
+    background-color: #ffffff;
+    selection-background-color: #5a9bd5;
+    selection-color: #ffffff;
+    outline: none;
+}</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="basketTable">
@@ -56,21 +138,58 @@
       <height>411</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget {
+        background-color: #ffffff;
+        border: 2px solid #b0b0b0;  /* soft gray border */
+        border-radius: 12px;         /* rounded corners */
+        gridline-color: #e0e0e0;     /* subtle grid lines */
+        padding: 5px;
+    }
+    QHeaderView::section {
+        background-color: #f5f5f5;   /* light header */
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;          /* rounded header corners */
+        padding: 4px;
+        font-weight: bold;
+    }
+    QTableWidget::item {
+        padding: 6px;
+    }
+    QTableWidget::item:selected {
+        background-color: #cce7ff;  /* gentle selection color */
+        color: #000000;
+    }</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="searchForm">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>90</y>
-      <width>113</width>
-      <height>22</height>
+      <y>81</y>
+      <width>141</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>50</x>
       <y>50</y>
       <width>111</width>
       <height>16</height>
@@ -124,6 +243,20 @@
       <height>30</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="checkoutButton">
     <property name="geometry">
@@ -133,6 +266,23 @@
       <width>201</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+        background-color: #7e57c2;       /* friendly purple */
+        color: white;                     /* text color */
+        border: none;
+        border-radius: 8px;               /* moderately round */
+        padding: 8px 20px;                /* comfortable size */
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #9575cd;       /* slightly lighter purple on hover */
+    }
+    QPushButton:pressed {
+        background-color: #5e35b1;       /* darker purple when pressed */
+    }</string>
     </property>
     <property name="text">
      <string>Checkout</string>
@@ -167,6 +317,20 @@
       <height>30</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+    </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -191,9 +355,9 @@
    <widget class="QLabel" name="subtotalLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>460</y>
-      <width>81</width>
+      <x>520</x>
+      <y>430</y>
+      <width>91</width>
       <height>41</height>
      </rect>
     </property>
@@ -211,8 +375,8 @@
    <widget class="QLabel" name="subtotal">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>466</y>
+      <x>630</x>
+      <y>440</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -237,9 +401,9 @@
    <widget class="QLabel" name="vatLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>500</y>
-      <width>81</width>
+      <x>520</x>
+      <y>480</y>
+      <width>101</width>
       <height>41</height>
      </rect>
     </property>
@@ -257,8 +421,8 @@
    <widget class="QLabel" name="totalVat">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>505</y>
+      <x>630</x>
+      <y>490</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -270,8 +434,8 @@
    <widget class="QLabel" name="totalLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>540</y>
+      <x>520</x>
+      <y>530</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -290,8 +454,8 @@
    <widget class="QLabel" name="total">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>545</y>
+      <x>630</x>
+      <y>540</y>
       <width>141</width>
       <height>31</height>
      </rect>

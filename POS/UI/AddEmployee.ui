@@ -14,14 +14,35 @@
    <string>Admin Panel</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget {
+                background: qlineargradient(
+                    x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #e0f7fa,       /* top: soft pastel cyan */
+                    stop:0.5 #f9f9f9,     /* middle: very light gray */
+                    stop:1 #ffffff        /* bottom: pure white */
+                );
+            }</string>
+   </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
       <width>251</width>
-      <height>601</height>
+      <height>701</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff,
+            stop:1 #e6e6e6
+        );
+        border-radius: 15px;
+        border: 1px solid #d9d9d9;
+    }</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -38,6 +59,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Statistics</string>
      </property>
@@ -50,6 +82,17 @@
        <width>171</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
      </property>
      <property name="text">
       <string>Employees</string>
@@ -64,6 +107,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Inventory</string>
      </property>
@@ -76,6 +130,17 @@
        <width>171</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
      </property>
      <property name="text">
       <string>Promotions</string>
@@ -90,6 +155,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Logs</string>
      </property>
@@ -97,10 +173,10 @@
     <widget class="QLabel" name="greeting_2">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>80</y>
+       <x>20</x>
+       <y>60</y>
        <width>211</width>
-       <height>31</height>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
@@ -111,189 +187,395 @@
       </font>
      </property>
      <property name="text">
-      <string>Add Employee</string>
+      <string>Employees</string>
      </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="logoutButton">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>40</y>
+      <x>1080</x>
+      <y>30</y>
       <width>93</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff, stop:1 #e0e0e0
+        );
+        border: 1px solid #b3b3b3;
+        border-radius: 14px; /* half of height for fully rounded */
+        color: #333333;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    QPushButton:hover {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #f2f2f2, stop:1 #d9d9d9
+        );
+    }
+    QPushButton:pressed {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #d9d9d9, stop:1 #bfbfbf
+        );
+    }</string>
     </property>
     <property name="text">
      <string>logout</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>70</y>
-      <width>261</width>
-      <height>31</height>
+      <x>360</x>
+      <y>80</y>
+      <width>721</width>
+      <height>561</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Add new Cashier </string>
+    <property name="styleSheet">
+     <string notr="true">QFrame#frame_2 {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff,       /* top: pure white */
+            stop:0.5 #f9f9f9,     /* middle: very light gray */
+            stop:1 #e0f7fa        /* bottom: soft pastel cyan */
+        );
+        border-radius: 20px;       /* rounded corners */
+        border: 1px solid #cccccc; /* subtle border */
+    }</string>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="firstnameForm">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>130</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>120</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
-    <property name="text">
-     <string>First Name:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>180</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Middle Name:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="middlenameForm">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>180</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>230</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Last Name:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lastnameForm">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>230</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>280</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Username:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="usernameForm">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>280</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>340</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Password: </string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="passwordForm">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>340</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="submit">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>400</y>
-      <width>241</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Submit</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="errorMsg">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>500</y>
-      <width>271</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>[INVISIBLE ERROR MESSAGE HERE]</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="returnButton">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>400</y>
-      <width>241</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cancel</string>
-    </property>
+    <widget class="QLineEdit" name="firstnameForm">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>50</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 20px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>New Cashier:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 24px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>First Name:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>120</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 24px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>Middle Name:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="middlenameForm">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>120</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>190</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 24px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>Last Name:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lastnameForm">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>190</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>260</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 24px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>Username:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="usernameForm">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>260</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>330</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 24px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>Password: </string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="passwordForm">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>330</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+        border: 2px solid #cccccc;           /* soft gray border */
+        border-radius: 15px;                 /* very round corners */
+        padding: 6px 12px;                   /* comfortable spacing inside */
+        background-color: #fdfdfd;           /* very light background */
+        selection-background-color: #cce7ff; /* gentle blue selection */
+        font-size: 14px;                      /* slightly bigger text */
+    }
+    QLineEdit:focus {
+        border: 2px solid #7ab8f5;           /* highlight when focused */
+        background-color: #ffffff;
+    }</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="submit">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>400</y>
+       <width>241</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+        background-color: #7e57c2;       /* friendly purple */
+        color: white;                     /* text color */
+        border: none;
+        border-radius: 8px;               /* moderately round */
+        padding: 8px 20px;                /* comfortable size */
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #9575cd;       /* slightly lighter purple on hover */
+    }
+    QPushButton:pressed {
+        background-color: #5e35b1;       /* darker purple when pressed */
+    }</string>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="returnButton">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>400</y>
+       <width>241</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+        background-color: #7e57c2;       /* friendly purple */
+        color: white;                     /* text color */
+        border: none;
+        border-radius: 8px;               /* moderately round */
+        padding: 8px 20px;                /* comfortable size */
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #9575cd;       /* slightly lighter purple on hover */
+    }
+    QPushButton:pressed {
+        background-color: #5e35b1;       /* darker purple when pressed */
+    }</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="errorMsg">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>480</y>
+       <width>461</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+        font-size: 24px;           /* large text */
+        font-weight: bold;          /* bold */
+        color: #333333;             /* soft dark gray for modern look */
+    }</string>
+     </property>
+     <property name="text">
+      <string>[INVISIBLE ERROR MESSAGE HERE]</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

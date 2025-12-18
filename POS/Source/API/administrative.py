@@ -1,7 +1,7 @@
 import mysql.connector
 import bcrypt
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
 
 

@@ -7,7 +7,7 @@ import os
 
 #everything thats not administrative or used by cashier belongs here.
 
-connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="")
+connection = mysql.connector.connect(host="localhost",database="pos",user="root",password="root")
 cursor = connection.cursor(prepared=True)
 
 class Invoice:

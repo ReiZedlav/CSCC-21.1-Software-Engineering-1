@@ -14,14 +14,35 @@
    <string>Admin Panel</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget {
+                background: qlineargradient(
+                    x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #e0f7fa,       /* top: soft pastel cyan */
+                    stop:0.5 #f9f9f9,     /* middle: very light gray */
+                    stop:1 #ffffff        /* bottom: pure white */
+                );
+            }</string>
+   </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
       <width>251</width>
-      <height>601</height>
+      <height>701</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff,
+            stop:1 #e6e6e6
+        );
+        border-radius: 15px;
+        border: 1px solid #d9d9d9;
+    }</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -32,10 +53,10 @@
     <widget class="QLabel" name="greeting">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>30</x>
        <y>80</y>
-       <width>171</width>
-       <height>31</height>
+       <width>211</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
@@ -58,6 +79,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Statistics</string>
      </property>
@@ -70,6 +102,17 @@
        <width>171</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
      </property>
      <property name="text">
       <string>Employees</string>
@@ -84,6 +127,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Inventory</string>
      </property>
@@ -96,6 +150,17 @@
        <width>171</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
      </property>
      <property name="text">
       <string>Promotions</string>
@@ -110,6 +175,17 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+        background-color: #3498db;  /* Button color */
+        color: white;               /* Text color */
+        border-radius: 15px;        /* Rounded corners */
+        padding: 10px 20px;         /* Padding */
+    }
+    QPushButton:hover {
+        background-color: #2980b9;  /* Hover color */
+    }</string>
+     </property>
      <property name="text">
       <string>Logs</string>
      </property>
@@ -118,11 +194,23 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>110</y>
-      <width>621</width>
-      <height>431</height>
+      <x>290</x>
+      <y>90</y>
+      <width>891</width>
+      <height>591</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame#frame_2 {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff,       /* top: pure white */
+            stop:0.5 #f9f9f9,     /* middle: very light gray */
+            stop:1 #e0f7fa        /* bottom: soft pastel cyan */
+        );
+        border-radius: 20px;       /* rounded corners */
+        border: 1px solid #cccccc; /* subtle border */
+    }</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -133,7 +221,7 @@
     <widget class="QLabel" name="salesOverview">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>140</x>
        <y>10</y>
        <width>151</width>
        <height>41</height>
@@ -153,9 +241,9 @@
     <widget class="QLabel" name="totalLabel">
      <property name="geometry">
       <rect>
-       <x>442</x>
-       <y>20</y>
-       <width>151</width>
+       <x>570</x>
+       <y>10</y>
+       <width>61</width>
        <height>41</height>
       </rect>
      </property>
@@ -173,11 +261,14 @@
     <widget class="QLabel" name="todayLabel">
      <property name="geometry">
       <rect>
-       <x>31</x>
+       <x>170</x>
        <y>60</y>
-       <width>55</width>
-       <height>16</height>
+       <width>71</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px; color: #333;</string>
      </property>
      <property name="text">
       <string>Today</string>
@@ -186,11 +277,14 @@
     <widget class="QLabel" name="todayTotal">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>540</x>
        <y>60</y>
-       <width>121</width>
-       <height>20</height>
+       <width>321</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px; font-weight: bold; color: #333;</string>
      </property>
      <property name="text">
       <string>[TODAY TOTAL]</string>
@@ -199,11 +293,14 @@
     <widget class="QLabel" name="weekLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>90</y>
-       <width>91</width>
+       <x>160</x>
+       <y>120</y>
+       <width>111</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>This Week</string>
@@ -212,11 +309,14 @@
     <widget class="QLabel" name="weeklyTotal">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>90</y>
-       <width>121</width>
-       <height>20</height>
+       <x>540</x>
+       <y>120</y>
+       <width>201</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[WEEKLY TOTAL]</string>
@@ -225,11 +325,14 @@
     <widget class="QLabel" name="monthLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>130</y>
-       <width>91</width>
+       <x>160</x>
+       <y>170</y>
+       <width>141</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>This Month</string>
@@ -238,11 +341,14 @@
     <widget class="QLabel" name="monthlyTotal">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>130</y>
-       <width>111</width>
-       <height>20</height>
+       <x>540</x>
+       <y>170</y>
+       <width>221</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[MONTHLY TOTAL]</string>
@@ -251,11 +357,14 @@
     <widget class="QLabel" name="label_12">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>200</y>
+       <x>150</x>
+       <y>270</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px; font-weight: bold; color: #333;</string>
      </property>
      <property name="text">
       <string>Top 5 sellers</string>
@@ -264,11 +373,14 @@
     <widget class="QLabel" name="topOne">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>240</y>
+       <x>180</x>
+       <y>320</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[FIRST]</string>
@@ -277,11 +389,14 @@
     <widget class="QLabel" name="topTwo">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>270</y>
+       <x>180</x>
+       <y>370</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[SECOND]</string>
@@ -290,11 +405,14 @@
     <widget class="QLabel" name="topThree">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>300</y>
+       <x>180</x>
+       <y>420</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[THIRD]</string>
@@ -303,11 +421,14 @@
     <widget class="QLabel" name="topFour">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>340</y>
+       <x>180</x>
+       <y>470</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[FOURTH]</string>
@@ -316,11 +437,14 @@
     <widget class="QLabel" name="topFive">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>380</y>
+       <x>180</x>
+       <y>520</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[FIFTH]</string>
@@ -329,11 +453,14 @@
     <widget class="QLabel" name="countOne">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>242</y>
+       <x>550</x>
+       <y>320</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[COUNT 1]</string>
@@ -342,11 +469,14 @@
     <widget class="QLabel" name="countTwo">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>269</y>
+       <x>550</x>
+       <y>370</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[COUNT 2]</string>
@@ -355,11 +485,14 @@
     <widget class="QLabel" name="countThree">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>301</y>
+       <x>550</x>
+       <y>420</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[COUNT 3]</string>
@@ -368,11 +501,14 @@
     <widget class="QLabel" name="countFour">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>341</y>
+       <x>550</x>
+       <y>470</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[COUNT 4]</string>
@@ -381,11 +517,14 @@
     <widget class="QLabel" name="countFive">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>381</y>
+       <x>550</x>
+       <y>520</y>
        <width>151</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[COUNT 5]</string>
@@ -394,11 +533,14 @@
     <widget class="QLabel" name="yearLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>170</y>
+       <x>160</x>
+       <y>220</y>
        <width>91</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>This Year</string>
@@ -407,11 +549,14 @@
     <widget class="QLabel" name="yearlyTotal">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>170</y>
-       <width>111</width>
-       <height>20</height>
+       <x>540</x>
+       <y>220</y>
+       <width>201</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 20px;  color: #333;</string>
      </property>
      <property name="text">
       <string>[YEARLY TOTAL]</string>
@@ -421,11 +566,36 @@
    <widget class="QPushButton" name="logoutButton">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>40</y>
+      <x>1080</x>
+      <y>30</y>
       <width>93</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #ffffff, stop:1 #e0e0e0
+        );
+        border: 1px solid #b3b3b3;
+        border-radius: 14px; /* half of height for fully rounded */
+        color: #333333;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    QPushButton:hover {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #f2f2f2, stop:1 #d9d9d9
+        );
+    }
+    QPushButton:pressed {
+        background: qlineargradient(
+            x1:0, y1:0, x2:0, y2:1,
+            stop:0 #d9d9d9, stop:1 #bfbfbf
+        );
+    }</string>
     </property>
     <property name="text">
      <string>logout</string>

@@ -186,7 +186,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>Sales_Overview-removebg-preview.png</pixmap>
+       <pixmap>../../Sales_Overview-removebg-preview.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
